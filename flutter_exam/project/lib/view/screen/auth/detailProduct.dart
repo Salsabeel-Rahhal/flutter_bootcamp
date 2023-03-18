@@ -497,6 +497,20 @@ class Product extends StatelessWidget {
                                             Color.fromARGB(255, 4, 4, 4)))))),
                   ),
                 ),
+                SizedBox(
+                  width: 20,
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Featured Product"),
+                    Text(
+                      "See All",
+                      style: TextStyle(color: Colors.blue),
+                    )
+                  ],
+                ),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -568,21 +582,7 @@ class Product extends StatelessWidget {
                                                 style: TextStyle(fontSize: 9),
                                               ),
                                             ],
-                                          )
-
-                                          // Icon(
-                                          //   Icons.star,
-                                          //   color: Colors.yellow,
-                                          //   size: 9,
-                                          // ),
-                                          // Container(
-                                          //   width: 40,
-                                          //   child: Text(
-                                          //     "4.6",
-                                          //     style: TextStyle(fontSize: 9),
-                                          //   ),
-                                          // ),
-                                          ,
+                                          ),
                                           Text(
                                             "86 Reviews",
                                             style: TextStyle(fontSize: 9),
