@@ -95,7 +95,7 @@ class _ResetState extends State<Reset> {
                 obscureText: obscureText,
                 validator: (value) {
                   if (value == null || value.length < 6) {
-                    return "Please enter an same   password";
+                    return "Please enter the password";
                   }
                   return null;
                 },

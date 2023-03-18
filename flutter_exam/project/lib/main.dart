@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/view/screen/auth/detailProduct.dart';
 import 'package:project/view/screen/auth/forget_password.dart';
 import 'package:project/view/screen/auth/login.dart';
 import 'package:project/view/screen/auth/onboarding.dart';
@@ -22,8 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Reset(),
+      home: Product(),
     );
   }
 }
-// This trailing comma makes auto-formatting nicer for build methods.
