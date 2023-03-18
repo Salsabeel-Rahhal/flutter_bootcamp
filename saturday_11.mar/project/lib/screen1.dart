@@ -31,28 +31,26 @@ class _ScreenOneState extends State<ScreenOne> {
               height: 120,
               child: Card(
                   margin: EdgeInsets.only(top: 15, bottom: 15),
-                  child: Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        IconButton(
-                            padding: EdgeInsets.only(left: 15, right: 250),
-                            onPressed: () {},
-                            icon: Icon(Icons.arrow_back_ios_new)),
-                        Text(
-                          "LOGIN",
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
-                        ),
-                        CircleAvatar(
-                          backgroundImage: AssetImage("assets/pic.png"),
-                          radius: 25,
-                          //child: ,
-                        ),
-                      ],
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      IconButton(
+                          padding: EdgeInsets.only(left: 15, right: 250),
+                          onPressed: () {},
+                          icon: Icon(Icons.arrow_back_ios_new)),
+                      Text(
+                        "LOGIN",
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      ),
+                      CircleAvatar(
+                        backgroundImage: AssetImage("assets/pic.png"),
+                        radius: 25,
+                        //child: ,
+                      ),
+                    ],
                   )),
             ),
             Container(
