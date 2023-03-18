@@ -17,6 +17,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   bool isObsecure = true;
   @override
   Widget build(BuildContext context) {
+    late DateTime _startDate = DateTime.now();
+
     LoginAndSignUpController controller = Get.put(LoginAndSignUpController());
     return Scaffold(
         appBar: AppBar(
