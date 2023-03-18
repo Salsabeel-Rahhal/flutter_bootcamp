@@ -5,6 +5,13 @@ class Product extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Map> users = List.generate(
+        2,
+        (index) => {
+              "id": index + 1,
+              "name": "Keripik Pisang ",
+              "price": "30.000"
+            }).toList();
     return Scaffold(
       body: ListView(
         shrinkWrap: true,
@@ -134,28 +141,36 @@ class Product extends StatelessWidget {
                           )
                         ],
                       ),
-                      Column(
-                        children: [
-                          Container(
-                            width: 30,
-                            height: 30,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Color.fromARGB(255, 155, 223, 157),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text(
-                                  "Tersedia : 250",
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 28, 131, 32)),
-                                )
-                              ],
-                            ),
+                      Container(
+                        width: 80,
+                        // height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Color.fromARGB(255, 204, 229, 205),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 9),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Container(
+                                //  width: 400,
+                                child: Center(
+                                  child: Text(
+                                    "Tersedia : 250",
+                                    style: TextStyle(
+                                        fontSize: 9,
+                                        color:
+                                            Color.fromARGB(255, 28, 131, 32)),
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
-                        ],
-                      )
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -255,19 +270,389 @@ class Product extends StatelessWidget {
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: 30,
+                    ),
                     Row(
                       children: [
                         CircleAvatar(
                           backgroundImage:
                               AssetImage("assets/images/pho5.jpeg"),
                         ),
+                        SizedBox(
+                          width: 10,
+                        ),
                         Text(
                           "Andi",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 10),
+                              fontWeight: FontWeight.bold, fontSize: 12),
+                        ),
+                        SizedBox(
+                          width: 200,
+                        ),
+                        Text(
+                          "2 Minggu yang lalu",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 104, 104, 104),
+                              fontSize: 10),
                         ),
                       ],
-                    )
+                    ),
+                    SizedBox(
+                      width: 40,
+                    ),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 18,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 18,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 18,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 18,
+                        ),
+                        Icon(
+                          Icons.star_border_outlined,
+                          size: 18,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Text(
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundImage:
+                              AssetImage("assets/images/pho3.jpeg"),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Wijaya",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 12),
+                        ),
+                        SizedBox(
+                          width: 200,
+                        ),
+                        Text(
+                          "2 Minggu yang lalu",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 104, 104, 104),
+                              fontSize: 10),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 40,
+                    ),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 18,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 18,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 18,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 18,
+                        ),
+                        Icon(
+                          Icons.star_border_outlined,
+                          size: 18,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Text(
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundImage:
+                              AssetImage("assets/images/pho2.jpeg"),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Andi",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 12),
+                        ),
+                        SizedBox(
+                          width: 200,
+                        ),
+                        Text(
+                          "2 Minggu yang lalu",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 104, 104, 104),
+                              fontSize: 10),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 40,
+                    ),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 18,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 18,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 18,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 18,
+                        ),
+                        Icon(
+                          Icons.star_border_outlined,
+                          size: 18,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Text(
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
+                    SizedBox(
+                      height: 30,
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Container(
+                    //height: 45,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                        onPressed: () {},
+                        child: Center(
+                            child: Text(
+                          "Lihat Semua Ulasan ",
+                          style: TextStyle(color: Color.fromARGB(255, 3, 3, 3)),
+                        )),
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.white),
+                            shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                    side: BorderSide(
+                                        color:
+                                            Color.fromARGB(255, 4, 4, 4)))))),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  child: GridView.builder(
+                      shrinkWrap: true,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 1,
+                        vertical: 1,
+                      ),
+                      itemCount: users.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 300.0,
+                        childAspectRatio: 1.0,
+                        mainAxisSpacing: 0.0, // Horizatally.
+                        crossAxisSpacing: 7.0, // Vertically
+                      ),
+                      itemBuilder: (context, index) => Column(
+                            children: [
+                              Card(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 33, vertical: 33),
+                                  child: Column(
+                                    children: [
+                                      Image(
+                                          image: AssetImage(
+                                              "assets/images/pho1.jpeg")),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Container(
+                                          width: 300,
+                                          child: Text(
+                                            users[index]["name"],
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 12),
+                                          )),
+                                      Container(
+                                        width: 300,
+                                        child: Text(
+                                          "RP.30.000",
+                                          style: TextStyle(
+                                              color: Colors.red,
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Icon(
+                                                Icons.star,
+                                                color: Colors.yellow,
+                                                size: 9,
+                                              ),
+                                              Text(
+                                                "4.6",
+                                                style: TextStyle(fontSize: 9),
+                                              ),
+                                            ],
+                                          )
+
+                                          // Icon(
+                                          //   Icons.star,
+                                          //   color: Colors.yellow,
+                                          //   size: 9,
+                                          // ),
+                                          // Container(
+                                          //   width: 40,
+                                          //   child: Text(
+                                          //     "4.6",
+                                          //     style: TextStyle(fontSize: 9),
+                                          //   ),
+                                          // ),
+                                          ,
+                                          Text(
+                                            "86 Reviews",
+                                            style: TextStyle(fontSize: 9),
+                                          ),
+                                          Icon(
+                                            Icons.power_input,
+                                            size: 10,
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                // Text(users[index]["name"]),
+                              ),
+                            ],
+                          )),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Container(
+                        //height: 45,
+                        width: 150,
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            child: Center(
+                              child: Text(
+                                "Added",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.red),
+                                shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                        side:
+                                            BorderSide(color: Colors.black))))),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Container(
+                        //height: 45,
+                        width: 150,
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            child: Center(
+                                child: Text(
+                              "Tambah Ke Keranjang ",
+                              style: TextStyle(color: Colors.white),
+                            )),
+                            style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.blue),
+                                shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                        side:
+                                            BorderSide(color: Colors.black))))),
+                      ),
+                    ),
                   ],
                 ),
               ],
