@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Model.dart';
+
 class MyForm extends StatefulWidget {
   const MyForm({super.key});
 
@@ -10,19 +12,20 @@ class MyForm extends StatefulWidget {
 class _MyFormState extends State<MyForm> {
   bool obscureText = true;
 
-  TextEditingController dayController = new TextEditingController();
-  TextEditingController monthController = new TextEditingController();
-  TextEditingController yearController = new TextEditingController();
+  TextEditingController daycontroller = new TextEditingController();
+  TextEditingController monthcontroller = new TextEditingController();
+  TextEditingController yearcontroller = new TextEditingController();
 
-  final keyRom = GlobalKey<FormState>();
+  final _keyRom = GlobalKey<FormState>();
   final emailControler = TextEditingController();
   final passwordControler = TextEditingController();
-  final fullNameController = TextEditingController();
-  bool autValidate = false;
+  final FullNameControler = TextEditingController();
+  bool _autovalidate = false;
+
   String? gender;
-  bool displayMonthList = false;
-  bool displayDayList = false;
-  bool displayYearList = false;
+  bool displaymonthlist = false;
+  bool displaydaylist = false;
+  bool displayyearlist = false;
   Details details = new Details();
   List country = [
     {"title": "jordan", "value": "1"},
@@ -31,7 +34,7 @@ class _MyFormState extends State<MyForm> {
     {"title": "brazil", "value": "4"},
   ];
   String defaultValue = "";
-  List<String> monthList = [
+  List<String> monthlist = [
     "1",
     "2",
     "3",
@@ -45,7 +48,7 @@ class _MyFormState extends State<MyForm> {
     "11",
     "12"
   ];
-  List<String> dayList = [
+  List<String> daylist = [
     "1",
     "2",
     "3",
@@ -66,7 +69,8 @@ class _MyFormState extends State<MyForm> {
     "18",
     "19",
     "20",
-    "21" "22",
+    "21",
+    "22",
     "23",
     "24",
     "25",
@@ -76,7 +80,7 @@ class _MyFormState extends State<MyForm> {
     "29",
     "30",
   ];
-  List<String> yearList = [
+  List<String> yearlist = [
     "2000",
     "2001",
     "2002",
@@ -90,7 +94,6 @@ class _MyFormState extends State<MyForm> {
     "2010",
     "2011"
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,7 +105,7 @@ class _MyFormState extends State<MyForm> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
-            key: keyRom,
+            key: _keyRom,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -111,7 +114,7 @@ class _MyFormState extends State<MyForm> {
                   size: 60,
                 ),
                 TextFormField(
-                  controller: fullNameController,
+                  controller: FullNameControler,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'pleas enter Full Name ';
@@ -170,6 +173,14 @@ class _MyFormState extends State<MyForm> {
                           }).toList(),
                         ],
                         onChanged: (newvalue) {
+                          // setState(
+                          //   () =>
+                          //     defaultValue = newvalue!,
+                          //     _keyRom.currentState!.validate(){
+
+                          //     }
+
+                          // );
                           setState(() => defaultValue = newvalue!);
                           validator:
                           (value) {
@@ -228,9 +239,9 @@ class _MyFormState extends State<MyForm> {
                       Column(
                         children: [
                           Text("Day"),
-                          inputField("Day", dayController),
-                          displayDayList
-                              ? selectoptionfild("Day", dayController)
+                          inputField("Day", daycontroller),
+                          displaydaylist
+                              ? selectoptionfild("Day", daycontroller)
                               : SizedBox(),
                         ],
                       ),
@@ -240,9 +251,9 @@ class _MyFormState extends State<MyForm> {
                       Column(
                         children: [
                           Text("Month"),
-                          inputField("Month", monthController),
-                          displayMonthList
-                              ? selectoptionfild("Month", monthController)
+                          inputField("Month", monthcontroller),
+                          displaymonthlist
+                              ? selectoptionfild("Month", monthcontroller)
                               : SizedBox(),
                         ],
                       ),
@@ -252,9 +263,9 @@ class _MyFormState extends State<MyForm> {
                       Column(
                         children: [
                           Text("Year"),
-                          inputField("Year", yearController),
-                          displayYearList
-                              ? selectoptionfild("Year", yearController)
+                          inputField("Year", yearcontroller),
+                          displayyearlist
+                              ? selectoptionfild("Year", yearcontroller)
                               : SizedBox(),
                         ],
                       ),
@@ -264,6 +275,9 @@ class _MyFormState extends State<MyForm> {
                     ],
                   ),
                 ),
+
+                // ignore: prefer_const_constructors
+
                 TextFormField(
                   controller: passwordControler,
                   obscureText: obscureText,
@@ -276,7 +290,7 @@ class _MyFormState extends State<MyForm> {
                   },
                   decoration: InputDecoration(
                       label: Text('Passsword'),
-                      hintText: '***',
+                      hintText: '*****',
                       suffix: InkWell(
                         onTap: () {
                           setState(() {
@@ -309,96 +323,119 @@ class _MyFormState extends State<MyForm> {
   }
 
   _handLoginAction() {
-    if (keyRom.currentState!.validate()) {
+    if (_keyRom.currentState!.validate()) {
       //_keyRom.currentState?.save();
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text('Procesing Data')));
 
+      // String email = emailControler.text;
       Navigator.pushNamed(context, "/home");
+
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => HomePage(
+      //       email: email,
+      //     ),
+      //   ),
+      // );
     }
 
-    Widget inputField(String type, TextEditingController controller) {
-      return Container(
-        width: 110,
+    //  _validateForm() {
+    //   bool _isValid = _keyRom.currentState.validate();
+
+    //   if (_selectedItem == null) {
+    //     setState(() => _dropdownError = "Please select an option!");
+    //     _isValid = false;
+    //   }
+
+    //   if (_isValid) {
+    //     //form is valid
+    //   }
+    // }
+  }
+
+  Widget inputField(String type, TextEditingController controller) {
+    return Container(
+      width: 110,
+      height: 50,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: TextField(
+        controller: controller,
+        decoration: InputDecoration(
+            border: InputBorder.none,
+            suffixIcon: GestureDetector(
+                onTap: () {
+                  switch (type) {
+                    case "Day":
+                      displaydaylist = !displaydaylist;
+                      break;
+
+                    case "Month":
+                      displaymonthlist = !displaymonthlist;
+                      break;
+                    case "Year":
+                      displaydaylist = !displayyearlist;
+                      break;
+                  }
+                },
+                child: Icon(Icons.arrow_downward))),
+      ),
+    );
+  }
+
+  Widget selectoptionfild(String type, TextEditingController controller) {
+    return Container(
+        width: 130,
         height: 50,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(6),
-        ),
-        child: TextField(
-          controller: controller,
-          decoration: InputDecoration(
-              border: InputBorder.none,
-              suffixIcon: GestureDetector(
-                  onTap: () {
+            border: Border.all(color: Colors.grey),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(9),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.3),
+                spreadRadius: 1,
+                blurRadius: 3,
+                offset: Offset(0, 1),
+              )
+            ]),
+        child: ListView.builder(
+            itemCount: type == "Day"
+                ? daylist.length
+                : type == "Month"
+                    ? monthlist.length
+                    : yearlist.length,
+            itemBuilder: ((context, index) {
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
                     switch (type) {
                       case "Day":
-                        displayDayList = !displayDayList;
+                        controller.text = daylist[index];
+                        break;
+                      case "Month":
+                        controller.text = monthlist[index];
                         break;
 
-                      case "Month":
-                        displayMonthList = !displayMonthList;
-                        break;
                       case "Year":
-                        displayDayList = !displayYearList;
+                        controller.text = yearlist[index];
                         break;
                     }
-                  },
-                  child: Icon(Icons.arrow_downward))),
-        ),
-      );
-    }
-
-    Widget selectoptionfild(String type, TextEditingController controller) {
-      return Container(
-          width: 130,
-          height: 50,
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(9),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.3),
-                  spreadRadius: 1,
-                  blurRadius: 3,
-                  offset: Offset(0, 1),
-                )
-              ]),
-          child: ListView.builder(
-              itemCount: type == "Day"
-                  ? dayList.length
-                  : type == "Month"
-                      ? monthList.length
-                      : yearList.length,
-              itemBuilder: ((context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      switch (type) {
-                        case "Day":
-                          controller.text = dayList[index];
-                          break;
-                        case "Month":
-                          controller.text = monthList[index];
-                          break;
-
-                        case "Year":
-                          controller.text = yearList[index];
-                          break;
-                      }
-                    });
-                  },
-                  child: ListTile(
-                    title: Text(type == "Day"
-                        ? dayList[index]
-                        : type == "Month"
-                            ? monthList[index]
-                            : yearList[index]),
-                  ),
-                );
-              })));
-    }
+                  });
+                },
+                child: ListTile(
+                  title: Text(type == "Day"
+                      ? daylist[index]
+                      : type == "Month"
+                          ? monthlist[index]
+                          : yearlist[index]),
+                ),
+              );
+            })));
   }
 }
