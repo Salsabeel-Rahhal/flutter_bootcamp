@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class Task3 extends StatefulWidget {
-  const Task3({super.key});
+class ScreenThree extends StatefulWidget {
+  const ScreenThree({super.key});
 
   @override
-  State<Task3> createState() => _MyWidgetState();
+  State<ScreenThree> createState() => _ScreenThreeState();
 }
 
-class _MyWidgetState extends State<Task3> {
+class _ScreenThreeState extends State<ScreenThree> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

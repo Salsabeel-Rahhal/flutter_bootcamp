@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class Wether extends StatefulWidget {
-  const Wether({super.key});
+class ScreenTwo extends StatefulWidget {
+  const ScreenTwo({super.key});
 
   @override
-  State<Wether> createState() => _MyWidgetState();
+  State<ScreenTwo> createState() => _ScreenTwoState();
 }
 
-class _MyWidgetState extends State<Wether> {
+class _ScreenTwoState extends State<ScreenTwo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
