@@ -1,24 +1,21 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'controllers/post_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:project/models/post.dart';
-import 'package:project/controllers/post_controller.dart';
+import 'models/post.dart';
 
-class FakeApiPage extends StatefulWidget {
-  const FakeApiPage({super.key});
+class PostsPage extends StatefulWidget {
+  const PostsPage({super.key});
 
   @override
-  State<FakeApiPage> createState() => _FakeApiPageState();
+  State<PostsPage> createState() => _PostsPageState();
 }
 
-class _FakeApiPageState extends State<FakeApiPage> {
+class _PostsPageState extends State<PostsPage> {
   List<Post> _posts = [];
 
   @override
   void initState() {
     super.initState();
     _getAllPosts();
-    _getPostById();
   }
 
   _getAllPosts() async {
@@ -31,23 +28,17 @@ class _FakeApiPageState extends State<FakeApiPage> {
     });
   }
 
-  Future _getPostById() async {
-    var url = "https://jsonplaceholder.typicode.com/posts?=14";
-    var response = await http.get(url as Uri);
-    var responseBody = jsonDecode(response.body);
-    print(responseBody[2]);
-
-    setState(() {
-      _posts.addAll(responseBody);
-    });
-    print(_posts);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: const Text("Posts"),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.pushNamed(context, "/postForm");
+          },
+          child: Icon(Icons.add),
         ),
         body: _posts.isEmpty
             ? const Center(
@@ -62,6 +53,10 @@ class _FakeApiPageState extends State<FakeApiPage> {
                 itemBuilder: (context, index) => ListTile(
                       title: Text(_posts[index].title),
                       subtitle: Text(_posts[index].body),
+                      onTap: () {
+                        Navigator.pushNamed(context, "/postDetails",
+                            arguments: _posts[index].id);
+                      },
                     )));
   }
 }

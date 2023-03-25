@@ -1,11 +1,12 @@
-import 'dart:io';
-
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:project/post_detailes.dart';
+import 'package:project/post_form_page.dart';
+import 'package:project/post_page.dart';
 import 'package:project/tab_page.dart';
 import 'bottom_tabs_page.dart';
 import 'custom_tab_page.dart';
-import 'fake_api_page.dart';
 import 'gridview_page.dart';
 import 'home_page.dart';
 import 'model.dart';
@@ -28,13 +29,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      builder: EasyLoading.init(),
       theme: ThemeData(primarySwatch: Colors.orange),
+      // home: MyFirstStatefulWidget(),
       initialRoute: "/",
       onGenerateRoute: (settings) {
         var routes = {
           // "/listview": (context) => ListViewPage(),
+          "/postDetails": (context) =>
+              PostDetailsPage(settings.arguments as int),
           "/gridView": (context) => GridViewPage(),
-          "/": (context) => FakeApiPage(),
+          "/": (context) => PostsPage(),
+          "/postForm": (context) => PostFormPage(),
           "/bottomTab": (context) => BottomTabsPage(),
           "/tabs": (context) => TabPage(),
           "/customTab": (context) => CustomTabPage(),
