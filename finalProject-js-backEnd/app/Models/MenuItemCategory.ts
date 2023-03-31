@@ -5,6 +5,12 @@ export default class MenuItemCategory extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column({ serializeAs: 'item_category_name' })
+  public itemCategoryName: string
+
+  @column({ serializeAs: 'item_category_desc' })
+  public itemCategoryDesc: string
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
