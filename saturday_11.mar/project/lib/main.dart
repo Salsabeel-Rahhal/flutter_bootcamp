@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/pageOne.dart';
 import 'package:project/screen1.dart';
 import 'package:project/screen2.dart';
 import 'package:project/screen3.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ScreenOne(),
+      home: FireOne(),
       initialRoute: '/',
       routes: {
         '/': (context) => MyHomePage(),

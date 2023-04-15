@@ -1,6 +1,5 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-
 import 'Model.dart';
 
 class MyForm extends StatefulWidget {
@@ -100,6 +99,13 @@ class _MyFormState extends State<MyForm> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        actions: [
+          Switch(
+              value: _themeManager.themeMode == ThemeMode.dark,
+              onChanged: (newValue) {
+                _themeManager.toggleTheme(newValue);
+              })
+        ],
         title: Text('Login'),
       ),
       body: Center(

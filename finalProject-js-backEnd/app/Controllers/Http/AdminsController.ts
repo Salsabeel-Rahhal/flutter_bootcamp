@@ -4,7 +4,7 @@ import Admin from 'App/Models/Admin'
 export default class AdminsController {
   public async getAdmins(ctx: HttpContextContract) {
     var result = await Admin.all()
-    return result
+    return 'its work'
   }
   public async getId(ctx: HttpContextContract) {
     var id = ctx.params.id
