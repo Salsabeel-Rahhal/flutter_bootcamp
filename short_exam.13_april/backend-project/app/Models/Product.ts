@@ -5,6 +5,21 @@ export default class Product extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column({ serializeAs: 'name' })
+  public name: String
+
+  @column({ serializeAs: 'image' })
+  public image: string
+
+  @column({ serializeAs: 'price' })
+  public price: number
+
+  @column({ serializeAs: 'current_qty' })
+  public currentQty: number
+
+  @column({ serializeAs: 'description' })
+  public description: string
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
