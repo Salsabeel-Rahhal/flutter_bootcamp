@@ -22,7 +22,7 @@ export default class UsersController {
   public async logout(ctx: HttpContextContract) {
     var object = await ctx.auth.authenticate()
     await ctx.auth.logout()
-    return { message: 'Log Out' }
+    return { message: 'LogOut' }
   }
 
   public async create(ctx: HttpContextContract) {

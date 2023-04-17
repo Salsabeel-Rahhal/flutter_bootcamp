@@ -30,9 +30,6 @@ class ProductsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Products Page'),
-      ),
       body: ListView.builder(
         itemCount: products.length,
         itemBuilder: (BuildContext context, int index) {

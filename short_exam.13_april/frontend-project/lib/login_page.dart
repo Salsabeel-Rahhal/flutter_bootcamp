@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'home_page.dart';
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -52,12 +54,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Center(
                   child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        // TODO: Implement login functionality
+                        String userName = _usernameController.text;
+
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => HomeScreen())));
+                        // dynamic result =
+                        //     await Navigator.pushNamed(context, "/home");
+                        // print(result);
                       }
                     },
-                    child: Text('Log In'),
+                    child: Text('LogIn'),
                   ),
                 ),
               ),

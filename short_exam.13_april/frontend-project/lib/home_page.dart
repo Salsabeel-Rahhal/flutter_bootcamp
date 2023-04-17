@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:project/prodect_page.dart';
+import 'package:project/profile.dart';
 
-class HomePage extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage>
+class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
@@ -44,15 +46,11 @@ class _HomePageState extends State<HomePage>
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[
-          Center(
-            child: Text('Home Page'),
-          ),
+          ProductsPage(),
           Center(
             child: Text('My Orders Page'),
           ),
-          Center(
-            child: Text('Profile Page'),
-          ),
+          ProfilePage()
         ],
       ),
     );
