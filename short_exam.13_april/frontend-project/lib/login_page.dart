@@ -27,9 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: <Widget>[
               TextFormField(
                 controller: _usernameController,
-                decoration: InputDecoration(
-                  labelText: 'Username',
-                ),
+                decoration: InputDecoration(hintText: "user name or email"),
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your username';
@@ -40,9 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
               TextFormField(
                 controller: _passwordController,
                 obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                ),
+                decoration: InputDecoration(hintText: "password"),
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your password';
