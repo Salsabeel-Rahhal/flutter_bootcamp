@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project/prodect_page.dart';
+import 'package:project/product_page.dart';
 import 'package:project/profile.dart';
 
 class HomeScreen extends StatefulWidget {

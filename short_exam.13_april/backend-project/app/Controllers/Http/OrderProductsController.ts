@@ -29,25 +29,6 @@ export default class OrderProductsController {
     var result = await orderProducts.save()
     return result
   }
-  public async update(ctx: HttpContextContract) {
-    const newSchema = schema.create({
-      order_id: schema.number(),
-      product_id: schema.number(),
-      price: schema.number(),
-      qty: schema.number(),
-      id: schema.number(),
-    })
-    const fields = await ctx.request.validate({ schema: newSchema })
-    var id = fields.id
-    var orderProducts = await OrderProduct.findOrFail(id)
-    orderProducts.orderId = fields.order_id
-    orderProducts.productId = fields.product_id
-    orderProducts.price = fields.price
-    orderProducts.qty = fields.qty
-    var result = await orderProducts.save()
-    return result
-  }
-
   public async destory(ctx: HttpContextContract) {
     var id = ctx.params.id
     var orderProducts = await OrderProduct.findOrFail(id)
