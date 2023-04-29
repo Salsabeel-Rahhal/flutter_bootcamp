@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:project/home_page.dart';
+import 'package:project/my_routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      onGenerateRoute: MyRoutes.generateRoute,
       title: 'Flutter Demo',
       // home: const MyHomePage(),
       initialRoute: "/login",
