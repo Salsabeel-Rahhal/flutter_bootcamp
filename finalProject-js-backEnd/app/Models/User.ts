@@ -2,7 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import Review from './Review'
 import OrderDetaile from './OrderDetaile'
-import TableDetile from './TableDetile'
+import TableDetile from './TableDetaile'
 import Reservation from './Reservation'
 import Shop from './Shop'
 

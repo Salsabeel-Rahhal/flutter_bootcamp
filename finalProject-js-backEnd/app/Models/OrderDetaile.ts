@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import User from './User'
-import TableDetile from './TableDetile'
+import TableDetile from './TableDetaile'
 import Reservation from './Reservation'
 
 export default class OrderDetaile extends BaseModel {

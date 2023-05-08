@@ -1,6 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { schema } from '@ioc:Adonis/Core/Validator'
-import TableDetile from 'App/Models/TableDetile'
+import TableDetile from 'App/Models/TableDetaile'
 
 export default class TableDetailesController {
   public async getTableDetailes(ctx: HttpContextContract) {

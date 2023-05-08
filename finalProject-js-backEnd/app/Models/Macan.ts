@@ -22,7 +22,7 @@ export default class Macan extends BaseModel {
   public updatedAt: DateTime
 
   @beforeSave()
-  public static async hashPassword (macan: Macan) {
+  public static async hashPassword(macan: Macan) {
     if (macan.$dirty.password) {
       macan.password = await Hash.make(macan.password)
     }

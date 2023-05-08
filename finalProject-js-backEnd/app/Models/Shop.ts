@@ -5,6 +5,7 @@ import ShopMenu from './ShopMenu'
 import Reservation from './Reservation'
 import Admin from './Admin'
 import OrderDetaile from './OrderDetaile'
+import Review from './Review'
 
 export default class Shop extends BaseModel {
   @column({ isPrimary: true })
@@ -16,8 +17,8 @@ export default class Shop extends BaseModel {
   @column({ serializeAs: 'shop_location' })
   public shopLocation: string
 
-  @column({ serializeAs: 'rate' })
-  public rate: number
+  @column({ serializeAs: 'review_id' })
+  public reviewId: number
 
   @column({ serializeAs: 'contact_number' })
   public contactNumber: string
@@ -79,4 +80,9 @@ export default class Shop extends BaseModel {
     foreignKey: 'userId',
   })
   public UserId: HasMany<typeof User>
+
+  @hasMany(() => Review, {
+    foreignKey: 'reviewId',
+  })
+  public ReviewId: HasMany<typeof Review>
 }

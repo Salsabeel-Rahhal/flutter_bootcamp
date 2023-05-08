@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, BelongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, belongsTo, BelongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import Reservation from './Reservation'
+import User from './User'
 
 export default class Admin extends BaseModel {
   @column({ isPrimary: true })
@@ -32,6 +33,8 @@ export default class Admin extends BaseModel {
 
   @column({ serializeAs: 'admin_reservation_id' })
   public reservationId: number
+  @column({ serializeAs: 'user_id' })
+  public userId: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -43,4 +46,8 @@ export default class Admin extends BaseModel {
     foreignKey: 'reservationId',
   })
   public ReservationId: HasMany<typeof Reservation>
+  @belongsTo(() => User, {
+    foreignKey: 'userId',
+  })
+  public UserId: BelongsTo<typeof User>
 }

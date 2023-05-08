@@ -27,8 +27,8 @@ export default class Review extends BaseModel {
   })
   public UserId: BelongsTo<typeof User>
 
-  @hasMany(() => Shop, {
+  @belongsTo(() => Shop, {
     foreignKey: 'shopId',
   })
-  public ShopId: HasMany<typeof Shop>
+  public ShopId: BelongsTo<typeof Shop>
 }

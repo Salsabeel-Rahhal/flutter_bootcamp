@@ -1,6 +1,7 @@
 import 'package:project/Stream.dart';
 import 'package:flutter/material.dart';
 import 'package:project/my_counter.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   //initializa stream integer
@@ -14,11 +15,11 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Chang(
-      appBar: AppBar(
-        title: Text('Prvider lesson 1'),
-      ),
-      body: ChangeNotifierProvider<MyCounter>(),
-    );
+    return ChangeNotifierProvider<MyCounter>(
+        create: (context) => MyCounter(),
+        child: MaterialApp(
+          title: 'Prvider lesson 1',
+          //home: MyCounter();
+        ));
   }
 }

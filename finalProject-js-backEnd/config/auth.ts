@@ -100,7 +100,7 @@ const authConfig: AuthConfig = {
         | that time.
         |
         */
-        model: () => import('App/Models/Macan'),
+        model: () => import('App/Models/User'),
       },
     },
   },

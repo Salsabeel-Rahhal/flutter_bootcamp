@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
-import TableDetile from './TableDetile'
+import TableDetaile from './TableDetaile'
 
 export default class TableStatus extends BaseModel {
   @column({ isPrimary: true })
@@ -18,8 +18,8 @@ export default class TableStatus extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  @belongsTo(() => TableDetile, {
+  @belongsTo(() => TableDetaile, {
     foreignKey: 'tableId',
   })
-  public TableId: BelongsTo<typeof TableDetile>
+  public TableId: BelongsTo<typeof TableDetaile>
 }

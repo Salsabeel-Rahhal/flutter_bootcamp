@@ -8,8 +8,8 @@ export default class UsersController {
     return result
   }
   public async getId(ctx: HttpContextContract) {
-    var id = ctx.params.id
-    var result = await User.findOrFail(id)
+    var authId = await ctx.auth.authenticate()
+    var result = await User.findOrFail(authId.id)
     return result
   }
   public async create(ctx: HttpContextContract) {
