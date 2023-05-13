@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class MyAppBar extends StatelessWidget {
-  const MyAppBar({super.key});
+  MyAppBar({super.key, required this.Title, required this.body});
+  final String Title;
+  final String body;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      flex: 1,
+      flex: 3,
       child: ClipPath(
         clipper: MyCustomClipper(),
         child: Container(
@@ -19,12 +21,17 @@ class MyAppBar extends StatelessWidget {
               ],
             ),
           ),
-          child: const Center(
-            child: const Text(
-              "Sign In",
-              style: TextStyle(color: Colors.white, fontSize: 30),
-              textAlign: TextAlign.center,
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Center(
+                child: Text(
+                  Title,
+                  style: const TextStyle(color: Colors.white, fontSize: 18),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
           ),
         ),
       ),

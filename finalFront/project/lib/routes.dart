@@ -4,6 +4,6 @@ import 'package:project/view/screen/sign_up_page.dart';
 import 'view/screen/sign_in_page.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {
-  AppRoute.SignIn: (context) => const SignInPage(),
-  AppRoute.SignUp: (context) => const SignUpPage()
+  AppRoute.SignIn: (context) => SignInPage(),
+  AppRoute.SignUp: (context) => SignUpPage()
 };

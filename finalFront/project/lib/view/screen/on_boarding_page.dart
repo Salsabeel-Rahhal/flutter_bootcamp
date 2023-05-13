@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project/core/constant/routes.dart';
 import 'package:project/data/datasource/static/static.dart';
 import 'package:project/view/screen/sign_in_page.dart';
+import 'package:project/view/widget/custom_button_onboarding.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingPage extends StatefulWidget {
@@ -84,56 +85,85 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Container(
-                      margin: const EdgeInsets.only(bottom: 30),
-                      height: 50,
-                      width: 300,
-                      decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [
-                              Color.fromARGB(255, 74, 20, 140),
-                              Color.fromARGB(255, 182, 153, 217)
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(25.0)),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (currentIndex < onBoardingList.length - 1) {
-                            _controller.nextPage(
-                                duration: const Duration(milliseconds: 900),
-                                curve: Curves.easeInOut);
-                          } else {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const SignInPage()));
-                          }
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          shadowColor: Colors.transparent,
-                          elevation: 0,
-                        ),
-                        child: Text(currentIndex == onBoardingList.length - 1
-                            ? "Continue"
-                            : "Next"),
-                      )),
-                  TextButton.icon(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignInPage()));
-                    },
-                    label: const Text(
-                      "Skip",
-                      style: TextStyle(fontSize: 15),
-                    ),
-                    icon: const Icon(
-                      Icons.arrow_circle_right_outlined,
-                      size: 20,
-                    ),
-                  )
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      // CustomButton(
+                      //     labelOne: "Skip",
+                      //     labelTwo: "Let's Go",
+                      //     currentIndex: currentIndex,
+                      //     controller: _controller),
+                      // CustomButton(
+                      //     labelOne: "Next",
+                      //     labelTwo: "Continue",
+                      //     currentIndex: currentIndex,
+                      //     controller: _controller)
+                      Container(
+                          margin: const EdgeInsets.only(bottom: 30),
+                          height: 50,
+                          width: 100,
+                          decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 74, 20, 140),
+                                  Color.fromARGB(255, 182, 153, 217)
+                                ],
+                              ),
+                              borderRadius: BorderRadius.circular(25.0)),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignInPage()));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              shadowColor: Colors.transparent,
+                              elevation: 0,
+                            ),
+                            child: Text(
+                                currentIndex == onBoardingList.length - 1
+                                    ? "Let's Go"
+                                    : "Skip"),
+                          )),
+                      Container(
+                          margin: const EdgeInsets.only(bottom: 30),
+                          height: 50,
+                          width: 100,
+                          decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 74, 20, 140),
+                                  Color.fromARGB(255, 182, 153, 217)
+                                ],
+                              ),
+                              borderRadius: BorderRadius.circular(25.0)),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (currentIndex < onBoardingList.length - 1) {
+                                _controller.nextPage(
+                                    duration: const Duration(milliseconds: 900),
+                                    curve: Curves.easeInOut);
+                              } else {
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => SignInPage()));
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              shadowColor: Colors.transparent,
+                              elevation: 0,
+                            ),
+                            child: Text(
+                                currentIndex == onBoardingList.length - 1
+                                    ? "Continue"
+                                    : "Next"),
+                          )),
+                    ],
+                  ),
                 ],
               )),
     )));
