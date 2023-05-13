@@ -21,8 +21,6 @@ export default class UsersController {
       phone_number: schema.string(),
       address: schema.string(),
       city: schema.string(),
-      points: schema.number(),
-      gender: schema.boolean(),
     })
     const fields = await ctx.request.validate({ schema: newSchema })
     var user = new User()
@@ -33,8 +31,6 @@ export default class UsersController {
     user.phoneNumber = fields.phone_number
     user.address = fields.address
     user.city = fields.city
-    user.points = fields.points
-    user.gender = fields.gender
     var result = await user.save()
     return result
   }
@@ -48,8 +44,6 @@ export default class UsersController {
       phone_number: schema.string(),
       address: schema.string(),
       city: schema.string(),
-      points: schema.number(),
-      gender: schema.boolean(),
     })
     const fields = await ctx.request.validate({ schema: newSchema })
     var id = fields.id
@@ -61,8 +55,6 @@ export default class UsersController {
     user.phoneNumber = fields.phone_number
     user.address = fields.address
     user.city = fields.city
-    user.points = fields.points
-    user.gender = fields.gender
     var result = await user.save()
     return result
   }

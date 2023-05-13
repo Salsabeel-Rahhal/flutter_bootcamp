@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:dots_indicator/dots_indicator.dart';
-import 'package:project/view/screen/onboarding.dart';
+import 'package:project/view/screen/on_boarding_page.dart';
+import 'package:project/view/screen/sign_in_page.dart';
+
+import 'routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,10 +16,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.indigo,
-        ),
-        home: OnBoarding());
+            primaryColor: Colors.purple.shade900,
+            primarySwatch: Colors.purple,
+            primaryColorDark: Colors.deepPurple),
+        home: const OnBoardingPage());
   }
 }

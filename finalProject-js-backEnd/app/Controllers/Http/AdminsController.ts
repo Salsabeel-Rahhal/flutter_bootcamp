@@ -1,6 +1,7 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { schema } from '@ioc:Adonis/Core/Validator'
 import Admin from 'App/Models/Admin'
+
 export default class AdminsController {
   public async getAdmins(ctx: HttpContextContract) {
     var result = await Admin.all()

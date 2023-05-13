@@ -3,18 +3,20 @@ import 'package:project/data/model/onboardingmodel.dart';
 
 List<OnBoardingModel> onBoardingList = [
   OnBoardingModel(
-    title: "Welcome To Macan",
+    title: "Welcom To Macan",
     image: ImageAsset.onBoardingImageOne,
-    body: " A Reservation App Help you to Make you'r Journey better",
+    body: "The ordering become easier now just select your place and menu",
   ),
   OnBoardingModel(
-    title: "You Got A Map",
+    title: "Search for favorite food near you ",
     image: ImageAsset.onBoardingImageTwo,
-    body: "Explore A New Places With Macan",
+    body:
+        "Discover the service you want from over 1000 resturant's and coffe shops",
   ),
   OnBoardingModel(
-    title: "Let's Go!",
+    title: "Select The Favorite Menu",
     image: ImageAsset.onBoardingImageThree,
-    body: "Just Enjoy",
+    body:
+        "In your hands a lot of varieties of food and drinks from different cities and cultures",
   ),
 ];
