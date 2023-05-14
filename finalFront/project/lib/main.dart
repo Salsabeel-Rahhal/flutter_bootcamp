@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
             primaryColor: Colors.purple.shade900,
             primarySwatch: Colors.purple,
             primaryColorDark: Colors.deepPurple),
-        supportedLocales: L10n.all,
-        home: OnBoardingPage());
+        // supportedLocales: L10n.all,
+        home: SignInPage());
   }
 }

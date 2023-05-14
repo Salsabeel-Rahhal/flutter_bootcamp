@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-class L10n {
-  static final all = [
-    const Locale('ar'),
-    const Locale('en'),
-  ];
-}
+// class L10n {
+//   static final all = [
+//     const Locale('ar'),
+//     const Locale('en'),
+//   ];
+// }

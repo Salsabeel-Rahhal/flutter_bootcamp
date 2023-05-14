@@ -1,39 +1,72 @@
 import 'package:flutter/material.dart';
 
 class MyAppBar extends StatelessWidget {
-  MyAppBar({super.key, required this.Title, required this.body});
+  MyAppBar(
+      {super.key,
+      required this.Title,
+      required this.body,
+      required this.descriotion});
   final String Title;
   final String body;
+  final String descriotion;
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 3,
-      child: ClipPath(
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          Title,
+          style: TextStyle(color: Colors.white, fontSize: 18),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        leading: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+              size: 15,
+            )),
+      ),
+      body: ClipPath(
         clipper: MyCustomClipper(),
         child: Container(
-          height: 300,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromARGB(255, 74, 20, 140),
-                Color.fromARGB(255, 182, 153, 217)
-              ],
-            ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Center(
-                child: Text(
-                  Title,
-                  style: const TextStyle(color: Colors.white, fontSize: 18),
-                  textAlign: TextAlign.center,
-                ),
+            height: 300,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color.fromARGB(255, 74, 20, 140),
+                  Color.fromARGB(255, 182, 153, 217)
+                ],
               ),
-            ],
-          ),
-        ),
+            ),
+            child: Center(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      body,
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      descriotion,
+                      style: const TextStyle(
+                        color: Colors.white54,
+                        fontSize: 12,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ]),
+            )),
       ),
     );
   }
