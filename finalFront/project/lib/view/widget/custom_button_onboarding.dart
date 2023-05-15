@@ -13,7 +13,6 @@ class CustomButton extends StatelessWidget {
   final String labelOne;
   final String labelTwo;
   final int currentIndex;
-
   final PageController controller;
 
   @override

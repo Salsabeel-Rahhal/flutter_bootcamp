@@ -44,6 +44,7 @@ dependencies:
   flutter_material_color_picker: ^1.1.0+2
   shared_preferences: ^2.1.1
   gradient_borders: ^1.0.0
+  simple_gradient_text: ^1.2.4
   intl: ^0.17.0
   # DateTime
   jiffy: ^5.0.0
@@ -77,6 +78,7 @@ flutter:
     - assets/images/onboardingtwo.png
     - assets/images/onboardingone.png
     - assets/images/onboardingthree.png
+    - assets/images/profile2.jpg
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware
@@ -89,17 +91,13 @@ flutter:
     # "family" key with the font family name, and a "fonts" key with a
     # list giving the asset and other descriptors for the font. For
     # example:
-  # fonts:
-  #   - family: Cairo
-  #     fonts:
-  #       - asset: assets/fonts/Cairo-Regular.ttf
-  #       - asset: assets/fonts/Cairo-Medium.ttf
-  #         style: italic
-  #   - family: Playfaie_Display
-  #     fonts:
-  #       - asset: assets/fonts/PlayfaieDisplay-Regular.ttf
-  #       - asset: assets/fonts/PlayfaieDisplay-Medium.ttf
-  #         weight: 700
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo/static/Cairo-Regular.ttf
+        - asset: assets/fonts/Cairo/static/Cairo-Medium.ttf
+          style: italic
+
   # #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:project/view/screen/sign_in_page.dart';
 
 class MyAppBar extends StatelessWidget {
-  MyAppBar(
-      {super.key,
-      required this.Title,
-      required this.body,
-      required this.descriotion});
-  final String Title;
+  const MyAppBar({super.key, required this.body, required this.descriotion});
   final String body;
   final String descriotion;
 
@@ -16,14 +12,15 @@ class MyAppBar extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          Title,
-          style: TextStyle(color: Colors.white, fontSize: 18),
-        ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              splashColor:
+              Colors.transparent;
+              highlightColor:
+              Colors.transparent;
+            },
             icon: const Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
@@ -33,7 +30,7 @@ class MyAppBar extends StatelessWidget {
       body: ClipPath(
         clipper: MyCustomClipper(),
         child: Container(
-            height: 300,
+            height: 500,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [
@@ -45,25 +42,11 @@ class MyAppBar extends StatelessWidget {
             child: Center(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      body,
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      descriotion,
-                      style: const TextStyle(
-                        color: Colors.white54,
-                        fontSize: 12,
-                      ),
-                      textAlign: TextAlign.center,
+                  children: const [
+                    CircleAvatar(
+                      backgroundImage:
+                          AssetImage("assets/images/onboardingone.png"),
+                      radius: 100,
                     ),
                   ]),
             )),
@@ -78,7 +61,7 @@ class MyCustomClipper extends CustomClipper<Path> {
     Path myPath = Path();
     myPath.lineTo(0, size.height / 2);
     myPath.cubicTo(size.width / 4, 3 * (size.height / 2), (3 * size.width / 4),
-        size.height / 2, size.width, size.height * 0.9);
+        size.height / 4, size.width, size.height * 0.9);
     myPath.lineTo(size.width, 0);
     return myPath;
   }
