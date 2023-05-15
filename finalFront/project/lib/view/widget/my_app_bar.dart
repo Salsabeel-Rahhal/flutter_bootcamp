@@ -16,10 +16,7 @@ class MyAppBar extends StatelessWidget {
         elevation: 0.0,
         leading: IconButton(
             onPressed: () {
-              splashColor:
-              Colors.transparent;
-              highlightColor:
-              Colors.transparent;
+              
             },
             icon: const Icon(
               Icons.arrow_back_ios,
