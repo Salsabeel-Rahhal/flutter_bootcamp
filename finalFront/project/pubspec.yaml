@@ -99,7 +99,11 @@ flutter:
         - asset: assets/fonts/Cairo/static/Cairo-Regular.ttf
         - asset: assets/fonts/Cairo/static/Cairo-Medium.ttf
           style: italic
-
+    - family: Playfair_Display
+      fonts:
+        - asset: assets/fonts/Playfair_Display/static/PlayfairDisplay-Regular.ttf
+        - asset: assets/fonts/Playfair_Display/static/PlayfairDisplay-Medium.ttf
+          style: italic
   # #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

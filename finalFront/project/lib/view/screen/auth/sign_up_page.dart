@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:project/view/screen/auth/sign_in_page.dart';
 import 'package:project/view/widget/custom_auth/custom_button_auth.dart';
 import 'package:project/view/widget/custom_auth/custom_text_form_auth.dart';
 import '../../../controller/auth/sign_in_controller.dart';
-import '../../widget/custom_auth/custom_text_sign_up.dart';
+import '../../widget/custom_auth/custom_text.dart';
 import '../../widget/my_app_bar.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -24,6 +25,7 @@ class SignUpPage extends StatelessWidget {
                 const Size.fromHeight(200.0), // here the desired height
             child: MyAppBar(
               // AssetImage("assets/images/onboardingone.png")
+              title: "Sign Up",
               body: body,
               descriotion: desc,
             )),
@@ -62,17 +64,17 @@ class SignUpPage extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                const CustomButtonAuth(
+                CustomButtonAuth(
                   text: " Sign Up",
+                  onPressed: SignUpPage(),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 CustomText(
-                  textOne: " have an account ? ",
-                  textTwo: " Sign In",
-                  onTap: () {},
-                )
+                    textOne: " have an account ? ",
+                    textTwo: " Sign In",
+                    onTap: SignInPage())
               ],
             ),
           ),

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class verfication extends StatefulWidget {
+class VerficationPage extends StatefulWidget {
   const verfication({super.key});
 
   @override
-  State<verfication> createState() => _verficationState();
+  State<VerficationPage> createState() => _VerficationPageState();
 }
 
-class _verficationState extends State<verfication> {
+class _VerficationPageState extends State<VerficationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

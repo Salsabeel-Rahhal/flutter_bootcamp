@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:project/view/screen/auth/sign_in_page.dart';
 
 class MyAppBar extends StatelessWidget {
-  MyAppBar({super.key, required this.body, required this.descriotion});
-
+  MyAppBar(
+      {super.key,
+      required this.body,
+      required this.descriotion,
+      required this.title});
+  final String title;
   final String body;
   final String descriotion;
   ImageProvider<Object>? image;
@@ -29,6 +33,7 @@ class MyAppBar extends StatelessWidget {
       body: ClipPath(
         clipper: MyCustomClipper(),
         child: Container(
+            width: double.infinity,
             height: 500,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -38,15 +43,28 @@ class MyAppBar extends StatelessWidget {
                 ],
               ),
             ),
-            child: Center(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    CircleAvatar(
+            child: Container(
+              margin: const EdgeInsets.symmetric(vertical: 35, horizontal: 30),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const CircleAvatar(
                       backgroundImage:
                           AssetImage("assets/images/onboardingone.png"),
-                      radius: 100,
+                      radius: 75,
                     ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500),
+                    )
                   ]),
             )),
       ),

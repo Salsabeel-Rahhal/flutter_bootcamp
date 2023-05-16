@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project/core/constant/routes.dart';
 import 'package:project/data/datasource/static/static.dart';
 import 'package:project/view/screen/auth/sign_in_page.dart';
-import 'package:project/view/widget/custom_button_onboarding.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingPage extends StatefulWidget {
@@ -39,7 +37,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             setState(() {
               currentIndex = value;
             });
-            print(value);
+            // print(value);
           },
           controller: _controller,
           itemCount: onBoardingList.length,
@@ -64,7 +62,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                         fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
-                  Container(
+                  SizedBox(
                     height: 50,
                     width: 300,
                     child: Text(onBoardingList[i].body!,
@@ -73,6 +71,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           color: Colors.black,
                         ),
                         textAlign: TextAlign.center),
+                  ),
+                  const SizedBox(
+                    height: 20,
                   ),
                   SmoothPageIndicator(
                     controller: _controller,
@@ -88,20 +89,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      // CustomButton(
-                      //     labelOne: "Skip",
-                      //     labelTwo: "Let's Go",
-                      //     currentIndex: currentIndex,
-                      //     controller: _controller),
-                      // CustomButton(
-                      //     labelOne: "Next",
-                      //     labelTwo: "Continue",
-                      //     currentIndex: currentIndex,
-                      //     controller: _controller),
                       Container(
                           margin: const EdgeInsets.only(bottom: 30),
                           height: 50,
-                          width: 100,
+                          width: 130,
                           decoration: BoxDecoration(
                               gradient: const LinearGradient(
                                 colors: [
@@ -130,7 +121,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       Container(
                           margin: const EdgeInsets.only(bottom: 30),
                           height: 50,
-                          width: 100,
+                          width: 130,
                           decoration: BoxDecoration(
                               gradient: const LinearGradient(
                                 colors: [
