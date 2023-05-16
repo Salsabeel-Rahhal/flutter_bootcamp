@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:project/view/screen/sign_in_page.dart';
+import 'package:project/view/screen/auth/sign_in_page.dart';
 
 class MyAppBar extends StatelessWidget {
-  const MyAppBar({super.key, required this.body, required this.descriotion});
+  MyAppBar({super.key, required this.body, required this.descriotion});
+
   final String body;
   final String descriotion;
+  ImageProvider<Object>? image;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class MyAppBar extends StatelessWidget {
         elevation: 0.0,
         leading: IconButton(
             onPressed: () {
-              
+              Navigator.pop(context);
             },
             icon: const Icon(
               Icons.arrow_back_ios,

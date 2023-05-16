@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project/core/constant/routes.dart';
 import 'package:project/data/datasource/static/static.dart';
-import 'package:project/view/screen/sign_in_page.dart';
+import 'package:project/view/screen/auth/sign_in_page.dart';
 import 'package:project/view/widget/custom_button_onboarding.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -97,7 +97,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       //     labelOne: "Next",
                       //     labelTwo: "Continue",
                       //     currentIndex: currentIndex,
-                      //     controller: _controller)
+                      //     controller: _controller),
                       Container(
                           margin: const EdgeInsets.only(bottom: 30),
                           height: 50,
@@ -112,7 +112,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                               borderRadius: BorderRadius.circular(25.0)),
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.pushReplacement(
+                              Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => SignInPage()));
@@ -146,7 +146,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                     duration: const Duration(milliseconds: 900),
                                     curve: Curves.easeInOut);
                               } else {
-                                Navigator.pushReplacement(
+                                Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => SignInPage()));

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../data/datasource/static/static.dart';
-import '../screen/sign_in_page.dart';
+import '../screen/auth/sign_in_page.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton(

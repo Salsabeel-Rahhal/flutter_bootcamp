@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
-
-import '../../screen/sign_up_page.dart';
+import '../../screen/auth/sign_up_page.dart';
 
 class CustomText extends StatelessWidget {
-  CustomText(
+  const CustomText(
       {super.key, required this.textOne, required this.textTwo, this.onTap});
   final String textOne;
   final String textTwo;

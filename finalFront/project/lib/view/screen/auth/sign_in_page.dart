@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:project/view/widget/custom_auth/custom_text_sign_up.dart';
-import '../widget/my_app_bar.dart';
+import '../../../controller/auth/sign_in_controller.dart';
+import '../../widget/my_app_bar.dart';
 import 'package:project/view/widget/custom_auth/custom_button_auth.dart';
 import 'package:project/view/widget/custom_auth/custom_text_form_auth.dart';
 
 class SignInPage extends StatelessWidget {
   SignInPage({super.key});
-  var controller = PageController();
+  final controller = PageController();
+  final _controllerEmail = TextEditingController();
+  final _controllerPassword = TextEditingController();
   String body = "";
   String desc = "";
   @override
@@ -31,30 +36,35 @@ class SignInPage extends StatelessWidget {
                   hintText: "Enter your email ",
                   labelText: "Email",
                   iconData: Icons.email_outlined,
+                  controller: _controllerEmail,
                 ),
                 CustomTextFormAuth(
                   hintText: "Enter your password",
                   labelText: "Password",
                   iconData: Icons.lock_outlined,
+                  controller: _controllerPassword,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Text(
-                  "Forget Password",
-                  textAlign: TextAlign.end,
+                TextButton(
+                  child: const Text(
+                    "Forget Password",
+                    textAlign: TextAlign.end,
+                  ),
+                  onPressed: () {},
                 ),
-                CustomButtonAuth(
+                const CustomButtonAuth(
                   text: " Sign In",
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 CustomText(
                   textOne: "Don't have an account ? ",
                   textTwo: " Sign Up",
                   onTap: () {
-                    controller;
+                    controller.initialPage;
                   },
                 )
               ],
