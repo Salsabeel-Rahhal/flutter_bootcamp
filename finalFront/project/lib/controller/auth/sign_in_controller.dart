@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:project/core/constant/routes.dart';
+import 'package:project/view/screen/auth/forget_password/forget_password.dart';
 
 abstract class SignInController extends GetxController {
   login();
@@ -9,19 +10,26 @@ abstract class SignInController extends GetxController {
   goToForgetPassword();
 }
 
-class LoginAndSignUpController extends SignInController {
+class SignInControllerImp extends SignInController {
   // Controller for Login
   late TextEditingController email;
   late TextEditingController password;
-
-  // Controller for Sign Up
-  late TextEditingController signUpEmail;
-  late TextEditingController signUppassword;
-  late TextEditingController userName;
-  late TextEditingController phone;
+  // GlobalKey<FormState> keyForm = GlobalKey<FormState>();
+  // // Controller for Sign Up
+  // late TextEditingController signUpEmail;
+  // late TextEditingController signUppassword;
+  // late TextEditingController userName;
+  // late TextEditingController phone;
 
   @override
-  login() {}
+  login() {
+    // var formData = keyForm.currentState;
+    // if (formData!.validate()) {
+    //   print(" valid");
+    // } else {
+    //   print("not valid");
+    // }
+  }
 
   @override
   goToSignUp() {
@@ -45,5 +53,6 @@ class LoginAndSignUpController extends SignInController {
   @override
   goToForgetPassword() {
     Get.toNamed(AppRoute.forgetPassword);
+    // Navigator.push(context, MaterialPageRoute(builder: (context)=> ForgetPassword()));
   }
 }

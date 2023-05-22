@@ -1,9 +1,11 @@
+import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ApiHelper {
-  final String DOMAIN = " 192.168.56.1:3333";
+  final String domain = "192.168.100.9:3333";
 
   Future<String> getToken() async {
     var storage = const FlutterSecureStorage();
@@ -16,7 +18,7 @@ class ApiHelper {
   }
 
   Future<dynamic> getRequest(String path) async {
-    Uri uriFunction = Uri.http(DOMAIN, path);
+    Uri uriFunction = Uri.http(domain, path);
     var token = await getToken();
     var headers = {"Authorization": token};
     http.Response resposne = await http.get(uriFunction, headers: headers);
@@ -24,8 +26,17 @@ class ApiHelper {
   }
 
   Future<dynamic> postRequest(String path, Map body) async {
-    Uri uriFunction = Uri.http(DOMAIN, path);
+    Uri uriFunction = Uri.http(domain, path);
     http.Response resposne = await http.post(uriFunction, body: body);
+    return resposneFunction(resposne);
+  }
+
+  Future<dynamic> putRequest(String path, Map body) async {
+    Uri uriFunction = Uri.http(domain, path);
+    var token = await getToken();
+    var headers = {"Authorization": token};
+    http.Response resposne =
+        await http.put(uriFunction, body: body, headers: headers);
     return resposneFunction(resposne);
   }
 
@@ -52,37 +63,75 @@ class ApiHelper {
     }
   }
 
-  // Future postDio(String path, Map body) async {
-  //   final dio = Dio();
+  Future postDio(String path, Map body) async {
+    final dio = Dio();
 
-  //   var token = await getToken();
-  //   var headers = {"Authorization": token};
+    var token = await getToken();
+    var headers = {"Authorization": token};
 
-  //   Response response = await dio.post(
-  //     'http://$DOMAIN$path',
-  //     data: body,
-  //     options: Options(
-  //       headers: headers,
-  //     ),
-  //   );
-  //   switch (response.statusCode) {
-  //     case 200:
-  //     case 201:
-  //       return response.data;
-  //     case 400:
-  //       throw "Bad Request";
-  //     case 401:
-  //       throw "Unauthrizied";
-  //     case 402:
-  //       throw "Payment Required";
-  //     case 403:
-  //       throw "Forbidden";
-  //     case 404:
-  //       throw "Not Found";
-  //     case 500:
-  //       throw "Server Error :(";
-  //     default:
-  //       throw "Server Error :(";
-  //   }
-  // }
+    Response response = await dio.post(
+      'http://$domain$path',
+      data: body,
+      options: Options(
+        headers: headers,
+      ),
+    );
+    switch (response.statusCode) {
+      case 200:
+      case 201:
+        return response.data;
+      case 400:
+        throw "Bad Request";
+      case 401:
+        throw "Unauthrizied";
+      case 402:
+        throw "Payment Required";
+      case 403:
+        throw "Forbidden";
+      case 404:
+        throw "Not Found";
+      case 500:
+        throw "Server Error :(";
+      default:
+        throw "Server Error :(";
+    }
+  }
+
+  Future uploadImage(File file, urlPath) async {
+    final dio = Dio();
+
+    var token = await getToken();
+    var headers = {"Authorization": token};
+
+    FormData formData = FormData.fromMap({
+      "image_file": await MultipartFile.fromFile(file.path,
+          filename: file.path.split("/").last)
+    });
+    Response response = await dio.post(
+      'http://$domain$urlPath',
+      data: formData,
+      options: Options(
+        headers: headers,
+      ),
+    );
+    switch (response.statusCode) {
+      case 200:
+      case 201:
+        return response.data;
+      case 400:
+        throw "Bad Request";
+      case 401:
+        throw "Unauthrizied";
+      case 402:
+        throw "Payment Required";
+      case 403:
+        throw "Forbidden";
+      case 404:
+        throw "Not Found";
+      case 500:
+        throw "Server Error :(";
+      default:
+        throw "Server Error :(";
+    }
+  }
 }

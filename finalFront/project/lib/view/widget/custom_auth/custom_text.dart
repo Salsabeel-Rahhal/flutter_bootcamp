@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
-import '../../screen/auth/sign_in_page.dart';
-import '../../screen/auth/sign_up_page.dart';
 
+// ignore: must_be_immutable
 class CustomText extends StatelessWidget {
   CustomText({
     super.key,
     this.textOne,
     required this.textTwo,
-    required this.onTap,
+    this.onTap,
   });
   String? textOne;
   final String textTwo;
 
-  final Widget onTap;
+  Widget? onTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -30,7 +29,7 @@ class CustomText extends StatelessWidget {
           ]),
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => onTap));
+                context, MaterialPageRoute(builder: (context) => onTap!));
           },
         ),
       ],

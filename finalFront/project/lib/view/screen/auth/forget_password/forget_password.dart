@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project/view/screen/auth/verfication_page.dart';
 import 'package:project/view/widget/custom_auth/custom_text_form_auth.dart';
-import '../../../controller/auth/forget_password_controller.dart';
-import '../../widget/custom_auth/custom_button_auth.dart';
-import '../../widget/my_app_bar.dart';
+import '../../../../controller/auth/forget_password_controller.dart';
+import '../../../../core/functions/valid_input.dart';
+import '../../../widget/custom_auth/custom_button_auth.dart';
+import '../../../widget/custom_bars/my_app_bar.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({super.key});
@@ -20,7 +20,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   String desc = "";
   @override
   Widget build(BuildContext context) {
-    late DateTime _startDate = DateTime.now();
+    // late DateTime startDate = DateTime.now();
 
     // LoginAndSignUpController controller = Get.put(LoginAndSignUpController());
     return Scaffold(
@@ -61,13 +61,17 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               hintText: "Email ",
               labelText: "",
               iconData: Icons.email_outlined,
+              // valid: (val) {
+              //   return validInput(val!, 5, 100, "email");
+              // },
             ),
             const SizedBox(
               height: 20,
             ),
-            const CustomButtonAuth(
+            CustomButtonAuth(
               text: "Check",
-              onPressed: VerficationPage(),
+              // onPressed:  Navigator.push(
+              //   context, MaterialPageRoute(builder: (context) => onTap!))
             ),
             const SizedBox(
               height: 50,

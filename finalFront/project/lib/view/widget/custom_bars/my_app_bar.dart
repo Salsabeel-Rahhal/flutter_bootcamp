@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project/view/screen/auth/sign_in_page.dart';
 
+// ignore: must_be_immutable
 class MyAppBar extends StatelessWidget {
   MyAppBar(
       {super.key,

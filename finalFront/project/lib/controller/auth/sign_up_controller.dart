@@ -4,12 +4,13 @@ import '../../core/constant/routes.dart';
 
 abstract class SignUpController extends GetxController {
   signUp();
+  goToSignIn();
 }
 
 class SignUpControllerImp extends SignUpController {
   // Controller for Sign Up
   late TextEditingController signUpEmail;
-  late TextEditingController signUppassword;
+  late TextEditingController signUpPassword;
   late TextEditingController userName;
   late TextEditingController phone;
 
@@ -17,14 +18,14 @@ class SignUpControllerImp extends SignUpController {
   signUp() {}
 
   @override
-  goToSignUp() {
-    Get.toNamed(AppRoute.signUp);
+  goToSignIn() {
+    Get.toNamed(AppRoute.signIn);
   }
 
   @override
   void onInit() {
     signUpEmail = TextEditingController();
-    signUppassword = TextEditingController();
+    signUpPassword = TextEditingController();
     userName = TextEditingController();
     phone = TextEditingController();
     super.onInit();
@@ -33,7 +34,7 @@ class SignUpControllerImp extends SignUpController {
   @override
   void dispose() {
     signUpEmail.dispose();
-    signUppassword.dispose();
+    signUpPassword.dispose();
     userName.dispose();
     phone.dispose();
     super.dispose();
