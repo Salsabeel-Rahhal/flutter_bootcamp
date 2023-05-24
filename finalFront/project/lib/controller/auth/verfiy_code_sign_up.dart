@@ -1,19 +1,19 @@
 import 'package:get/get.dart';
 import 'package:project/core/constant/routes.dart';
 
-abstract class VerifyCodeController extends GetxController {
+abstract class VerfiyCodeSignUp extends GetxController {
   checkCode();
-  goToResetPassword();
+  goToSuccessSignUp();
 }
 
-class VerifyCodeControllerImp extends VerifyCodeController {
+class VerfiyCodeSignUpImp extends VerfiyCodeSignUp {
   late String verfiyCode;
   @override
   checkCode() {}
 
   @override
-  goToResetPassword() {
-    Get.offNamed(AppRoute.rasetPassword);
+  goToSuccessSignUp() {
+    Get.offNamed(AppRoute.successSignUp);
   }
 
   // @override

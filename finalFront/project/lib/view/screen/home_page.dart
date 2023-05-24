@@ -1,4 +1,6 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import '../widget/custom_bars/bottom_bar_home.dart';
 import '../widget/custom_bars/home_app_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,21 +15,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize:
-              const Size.fromHeight(200.0), // here the desired height
-          child: HomeAppBar(textController: controller)),
-      // body: Container(
-      //   child: ListView(
-      //     children: [
-      //       Container(
-      //         child: Row(
-      //           children:const [],
-      //         ),
-      //       )
-      //     ],
-      //   ),
-      // )
-    );
+        appBar: PreferredSize(
+            preferredSize:
+                const Size.fromHeight(200.0), // here the desired height
+            child: HomeAppBar(textController: controller)),
+        bottomNavigationBar: CurvedBar(),
+        body: Container(
+          child: ListView(
+            children: [
+              Container(
+                child: Row(
+                  children: const [],
+                ),
+              )
+            ],
+          ),
+        ));
   }
 }

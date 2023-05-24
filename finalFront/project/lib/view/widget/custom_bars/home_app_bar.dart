@@ -10,8 +10,15 @@ class HomeAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         extendBodyBehindAppBar: true,
-        drawer: const MyDrawer(),
         appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {
+                // Navigator.push(context, MaterialPageRoute(builder: (context)=>Map();))
+              },
+              icon: const Icon(
+                Icons.location_on_outlined,
+                size: 25,
+              )),
           centerTitle: true,
           backgroundColor: Colors.transparent,
           elevation: 0.0,
@@ -42,7 +49,7 @@ class HomeAppBar extends StatelessWidget {
               ),
               child: Container(
                 margin:
-                    const EdgeInsets.symmetric(vertical: 35, horizontal: 30),
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,

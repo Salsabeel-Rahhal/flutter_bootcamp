@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project/view/screen/auth/forget_password/verfication_page.dart';
+import 'package:project/view/screen/auth/success_sign_up.dart';
+import 'package:project/view/screen/auth/verfiy_sign_up.dart';
 import 'package:project/view/widget/custom_auth/custom_text_form_auth.dart';
 import '../../../../controller/auth/forget_password_controller.dart';
-import '../../../widget/custom_auth/custom_button_auth.dart';
-import '../../../widget/custom_bars/my_app_bar.dart';
 
-class ForgetPassword extends StatefulWidget {
-  const ForgetPassword({super.key});
+import '../../../controller/auth/check_email_controller.dart';
+import '../../widget/custom_auth/custom_button_auth.dart';
+import '../../widget/custom_bars/my_app_bar.dart';
+
+class CheckEmail extends StatefulWidget {
+  const CheckEmail({super.key});
 
   @override
-  State<ForgetPassword> createState() => _ForgetPasswordState();
+  State<CheckEmail> createState() => _CheckEmailState();
 }
 
-class _ForgetPasswordState extends State<ForgetPassword> {
-  ForgetControllerImp controller = Get.put(ForgetControllerImp());
+class _CheckEmailState extends State<CheckEmail> {
+  CheckEmailImp controller = Get.put(CheckEmailImp());
   bool isObsecure = true;
   String body = "Reset Password";
   String desc = "";
@@ -39,7 +43,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               height: 20,
             ),
             const Text(
-              "Check Email",
+              "Account successfully created",
               textAlign: TextAlign.left,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
@@ -47,7 +51,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               height: 20,
             ),
             const Text(
-              " Enter your email that we will send the OTP code on it ",
+              "Please Enter your email address to recive a verfication code.",
               textAlign: TextAlign.left,
               style: TextStyle(
                 color: Color.fromARGB(255, 124, 126, 126),
@@ -70,10 +74,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             ),
             CustomButtonAuth(
                 text: "Check",
-                onPressed: Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => VerficationPage()))),
+                onPressed: Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => VerfiySignUp()))),
             const SizedBox(
               height: 50,
             ),

@@ -9,7 +9,9 @@ class CustomTextFormAuth extends StatelessWidget {
     required this.labelText,
     this.iconData,
     this.controller,
+    this.validator,
   });
+  dynamic validator;
   final String hintText;
   final String labelText;
   final IconData? iconData;
@@ -20,17 +22,7 @@ class CustomTextFormAuth extends StatelessWidget {
       margin: const EdgeInsets.only(top: 20),
       child: TextFormField(
         controller: controller,
-        validator: (text) {
-          if (!EmailValidator.validate(text!)) {
-            return "Please add correct email address";
-          }
-
-          (text) {
-            if (text!.length < 8) {
-              return "Please add a valid passowrd";
-            }
-          };
-        },
+        validator: validator,
         decoration: InputDecoration(
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 8, horizontal: 30),

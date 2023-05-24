@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class CustomButtonAuth extends StatelessWidget {
   final String text;
-  dynamic Function(BuildContext)? onPressed;
-  CustomButtonAuth({super.key, required this.text, this.onPressed});
+  final onPressed;
+  const CustomButtonAuth({super.key, required this.text, this.onPressed});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,10 +21,7 @@ class CustomButtonAuth extends StatelessWidget {
           borderRadius: BorderRadius.circular(25.0)),
       child: MaterialButton(
         padding: const EdgeInsets.symmetric(vertical: 15),
-        onPressed: () {
-          // Navigator.push(
-          //     context, MaterialPageRoute(builder: (context) => onPressed ));
-        },
+        onPressed: onPressed,
         child: Text(
           text,
           style: const TextStyle(

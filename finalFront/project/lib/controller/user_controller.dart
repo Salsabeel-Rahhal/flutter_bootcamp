@@ -1,30 +1,30 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:project/data/model/sign_in_model.dart';
 import '../data/model/user_model.dart';
 import 'api_helper.dart';
 
 class UserController {
-  Future<bool> signIn(User user) async {
+  Future<SignInModel> signIn(String email, String password) async {
     try {
-      dynamic jsonObject =
-          await ApiHelper().postRequest("users/signIn", user.toJson());
-      String type = jsonObject["type"];
-      String token = jsonObject["token"];
-      var storage = const FlutterSecureStorage();
-      await storage.write(key: "token", value: "$type $token");
-
-      return true;
-    } catch (ex) {
-      print(ex);
+      var result = await ApiHelper().postRequest("users/signIn", {
+        "email": email,
+        "password": password,
+      });
+      return SignInModel.fromJson(result);
+    } catch (e) {
       rethrow;
     }
   }
 
-  Future<User> update({
-    required String password,
-  }) async {
+  Future<User> update(
+      {required String email,
+      required String password,
+      required String username}) async {
     try {
       var result = await ApiHelper().putRequest("users", {
+        "email": email,
         "password": password,
+        "username": username,
       });
       return User.fromJson(result);
     } catch (e) {
@@ -32,45 +32,23 @@ class UserController {
     }
   }
 
-  Future<bool> getemail(User user) async {
+  Future<User> getUser() async {
     try {
-      dynamic jsonObject =
-          await ApiHelper().postRequest("sers/email", user.tojsonemail());
-      String type = jsonObject["email"];
-
-      var storage = const FlutterSecureStorage();
-      await storage.write(key: "token", value: "$type ");
-
-      return true;
-    } catch (ex) {
-      print(ex);
+      var result = await ApiHelper().getRequest("users");
+      return User.fromJson(result);
+    } catch (e) {
       rethrow;
     }
   }
 
-  Future<User> getUser1() async {
-    dynamic jsonObject = await ApiHelper().getRequest("users");
-    return User.fromJson(jsonObject);
-  }
-
-  Future<User> getById(int id) async {
-    dynamic jsonObject = await ApiHelper().getRequest("users/$id");
-    return User.fromJson(jsonObject);
-  }
-
-  Future<bool> create(User user) async {
-    try {
-      dynamic jsonObject =
-          await ApiHelper().postRequest("users/signUp", user.toJson());
-      String type = jsonObject["type"];
-      String token = jsonObject["token"];
-      var storage = const FlutterSecureStorage();
-      await storage.write(key: "token", value: "$type $token");
-
-      return true;
-    } catch (ex) {
-      print(ex);
-      rethrow;
-    }
-  }
+  // Future<String> uploadImage(File file) async {
+  //   try {
+  //     var result = await ApiHelper().uploadImage(file, "/api/storage");
+  //     print(result);
+  //     return result["path"];
+  //   } catch (ex) {
+  //     print(ex);
+  //     rethrow;
+  //   }
+  // }
 }
