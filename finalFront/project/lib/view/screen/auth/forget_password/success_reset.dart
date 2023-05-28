@@ -18,9 +18,9 @@ class _SuccessResetState extends State<SuccessReset> {
           preferredSize:
               const Size.fromHeight(200.0), // here the desired height
           child: MyAppBar(
-            title: "Success Reset Password",
+            title: "Success Reset",
             body: "",
-            descriotion: "",
+            description: "",
           )),
       body: Container(
         padding: const EdgeInsets.all(15),
@@ -66,8 +66,10 @@ class _SuccessResetState extends State<SuccessReset> {
               child: MaterialButton(
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 onPressed: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => SignInPage()));
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SignInPage()));
                 },
                 child: const Text(
                   "Go to sign in page",

@@ -106,7 +106,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SignInPage()));
+                                      builder: (context) =>
+                                          const SignInPage()));
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.transparent,
@@ -140,7 +141,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => SignInPage()));
+                                        builder: (context) =>
+                                            const SignInPage()));
                               }
                             },
                             style: ElevatedButton.styleFrom(

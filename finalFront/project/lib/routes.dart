@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:project/core/constant/routes.dart';
-import 'package:project/view/screen/auth/check_email.dart';
 import 'package:project/view/screen/auth/forget_password/forget_password.dart';
 import 'package:project/view/screen/auth/forget_password/reset_password.dart';
 import 'package:project/view/screen/auth/forget_password/success_reset.dart';
@@ -14,19 +13,18 @@ import 'view/screen/auth/sign_in_page.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {
   AppRoute.onBoarding: (context) => const OnBoardingPage(),
-  AppRoute.signIn: (context) => SignInPage(),
-  AppRoute.signUp: (context) => SignUpPage(),
+  AppRoute.signIn: (context) => const SignInPage(),
+  AppRoute.signUp: (context) => const SignUpPage(),
   AppRoute.forgetPassword: (context) => const ForgetPassword(),
   AppRoute.verfication: (context) => const VerficationPage(),
   AppRoute.rasetPassword: (context) => const ResetPage(),
   AppRoute.successReset: (context) => const SuccessReset(),
   AppRoute.successSignUp: (context) => const SuccessSignUp(),
-  AppRoute.checkEmail: (context) => const CheckEmail(),
   AppRoute.homePage: (context) => const HomePage(),
   AppRoute.profilePage: (context) => const SuccessReset(),
   AppRoute.favoratePage: (context) => const SuccessSignUp(),
   AppRoute.settingsPage: (context) => const SuccessReset(),
   AppRoute.reservationPage: (context) => const SuccessSignUp(),
   AppRoute.mapPage: (context) => const SuccessSignUp(),
-  AppRoute.verfiyCodeSignUp: (context) => VerfiySignUp(),
+  AppRoute.verfiyCodeSignUp: (context) => const VerfiyCodeSignUp(),
 };

@@ -6,30 +6,29 @@ class CurvedBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int page = 0;
+    GlobalKey<CurvedNavigationBarState> bottomNavigationKey = GlobalKey();
     return Stack(children: [
       CurvedNavigationBar(
-          animationDuration: Duration(milliseconds: 500),
+          key: bottomNavigationKey,
+          animationDuration: const Duration(milliseconds: 500),
           backgroundColor: Colors.transparent,
           animationCurve: Curves.easeInOut,
-          color: Color.fromARGB(255, 74, 20, 140),
+          color: const Color.fromARGB(255, 74, 20, 138),
           items: const [
             Icon(
               Icons.settings,
               color: Colors.white,
               size: 25,
             ),
-            Icon(
-              Icons.account_circle_rounded,
-              color: Colors.white,
-              size: 25,
-            ),
+            Icon(Icons.favorite, color: Colors.white, size: 25),
             Icon(
               Icons.home,
               color: Colors.white,
               size: 25,
             ),
-            Icon(Icons.favorite, color: Colors.white, size: 25),
             Icon(Icons.calendar_month, color: Colors.white, size: 25),
+            Icon(Icons.location_on_outlined, color: Colors.white, size: 25),
           ]),
     ]);
   }

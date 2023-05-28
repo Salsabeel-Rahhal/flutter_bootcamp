@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/input_borders/gradient_outline_input_border.dart';
-import 'package:project/view/widget/drawer.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key, required this.textController});
@@ -16,8 +15,8 @@ class HomeAppBar extends StatelessWidget {
                 // Navigator.push(context, MaterialPageRoute(builder: (context)=>Map();))
               },
               icon: const Icon(
-                Icons.location_on_outlined,
-                size: 25,
+                Icons.account_circle_rounded,
+                size: 30,
               )),
           centerTitle: true,
           backgroundColor: Colors.transparent,

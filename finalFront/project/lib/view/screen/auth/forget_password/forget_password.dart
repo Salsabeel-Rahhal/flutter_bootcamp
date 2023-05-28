@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:project/view/screen/auth/forget_password/verfication_page.dart';
 import 'package:project/view/widget/custom_auth/custom_text_form_auth.dart';
 import '../../../../controller/auth/forget_password_controller.dart';
 import '../../../widget/custom_auth/custom_button_auth.dart';
 import '../../../widget/custom_bars/my_app_bar.dart';
+import 'package:flutter/material.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({super.key});
@@ -14,15 +13,12 @@ class ForgetPassword extends StatefulWidget {
 }
 
 class _ForgetPasswordState extends State<ForgetPassword> {
-  ForgetControllerImp controller = Get.put(ForgetControllerImp());
+  final controller = ForgetControllerImp();
   bool isObsecure = true;
   String body = "Reset Password";
   String desc = "";
   @override
   Widget build(BuildContext context) {
-    // late DateTime startDate = DateTime.now();
-
-    // LoginAndSignUpController controller = Get.put(LoginAndSignUpController());
     return Scaffold(
         appBar: PreferredSize(
             preferredSize:
@@ -30,25 +26,25 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             child: MyAppBar(
               title: "Forget Password",
               body: body,
-              descriotion: desc,
+              description: desc,
             )),
         body: Container(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 40),
           child: ListView(children: [
             const SizedBox(
-              height: 20,
+              height: 30,
             ),
             const Text(
               "Check Email",
-              textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 20,
             ),
             const Text(
               " Enter your email that we will send the OTP code on it ",
-              textAlign: TextAlign.left,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color.fromARGB(255, 124, 126, 126),
                 fontSize: 15,
@@ -69,11 +65,14 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               height: 20,
             ),
             CustomButtonAuth(
+                width: 150,
                 text: "Check",
-                onPressed: Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => VerficationPage()))),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const VerficationPage()));
+                }),
             const SizedBox(
               height: 50,
             ),

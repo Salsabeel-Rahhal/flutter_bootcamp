@@ -7,12 +7,12 @@ class CustomText extends StatelessWidget {
     super.key,
     this.textOne,
     required this.textTwo,
-    this.onTap,
+    required this.onTap,
   });
   String? textOne;
   final String textTwo;
 
-  Widget? onTap;
+  Widget onTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,6 +21,8 @@ class CustomText extends StatelessWidget {
         Text(
           textOne!,
           textAlign: TextAlign.end,
+          style: const TextStyle(
+              color: Colors.black, fontWeight: FontWeight.normal),
         ),
         InkWell(
           child: GradientText(textTwo, colors: const [
@@ -29,7 +31,7 @@ class CustomText extends StatelessWidget {
           ]),
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => onTap!));
+                context, MaterialPageRoute(builder: (context) => onTap));
           },
         ),
       ],

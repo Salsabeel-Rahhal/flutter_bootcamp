@@ -40,8 +40,10 @@ class CustomButton extends StatelessWidget {
                         duration: const Duration(milliseconds: 900),
                         curve: Curves.easeInOut);
                   } else {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => SignInPage()));
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignInPage()));
                   }
                 },
                 style: ElevatedButton.styleFrom(

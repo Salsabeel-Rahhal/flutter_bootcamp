@@ -4,7 +4,7 @@ import '../../core/constant/routes.dart';
 
 abstract class SignUpController extends GetxController {
   signUp();
-  goToSignIn();
+  goToVerfiyCodeSignUp();
 }
 
 class SignUpControllerImp extends SignUpController {
@@ -18,7 +18,7 @@ class SignUpControllerImp extends SignUpController {
   signUp() {}
 
   @override
-  goToSignIn() {
+  goToVerfiyCodeSignUp() {
     Get.toNamed(AppRoute.signIn);
   }
 

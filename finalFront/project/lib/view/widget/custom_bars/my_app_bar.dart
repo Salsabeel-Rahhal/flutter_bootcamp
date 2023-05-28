@@ -5,11 +5,11 @@ class MyAppBar extends StatelessWidget {
   MyAppBar(
       {super.key,
       required this.body,
-      required this.descriotion,
+      required this.description,
       required this.title});
   final String title;
   final String body;
-  final String descriotion;
+  final String description;
   ImageProvider<Object>? image;
 
   @override
@@ -62,7 +62,7 @@ class MyAppBar extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 25,
+                          fontSize: 20,
                           fontWeight: FontWeight.w500),
                     )
                   ]),

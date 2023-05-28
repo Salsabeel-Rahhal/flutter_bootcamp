@@ -1,17 +1,46 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:project/data/model/sign_in_model.dart';
 import '../data/model/user_model.dart';
 import 'api_helper.dart';
 
 class UserController {
-  Future<SignInModel> signIn(String email, String password) async {
+  // Future<SignInModel> signIn(String email, String password) async {
+  //   try {
+  //     var result = await ApiHelper().postRequest("users/signIn", {
+  //       "email": email,
+  //       "password": password,
+  //     });
+  //     return SignInModel.fromJson(result);
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
+  Future<bool> signIn(User user) async {
     try {
-      var result = await ApiHelper().postRequest("users/signIn", {
-        "email": email,
-        "password": password,
-      });
-      return SignInModel.fromJson(result);
-    } catch (e) {
+      dynamic jsonObject =
+          await ApiHelper().postRequest("users/signIn", user.toJsonLogin());
+      String type = jsonObject["type"];
+      String token = jsonObject["token"];
+      var storage = const FlutterSecureStorage();
+      await storage.write(key: "token", value: "$type $token");
+
+      return true;
+    } catch (ex) {
+      // print(ex);
+      rethrow;
+    }
+  }
+
+  Future<bool> create(User user) async {
+    try {
+      dynamic jsonObject =
+          await ApiHelper().postRequest("users/signUp", user.toJson());
+      String type = jsonObject["type"];
+      String token = jsonObject["token"];
+      var storage = const FlutterSecureStorage();
+      await storage.write(key: "token", value: "$type $token");
+
+      return true;
+    } catch (ex) {
       rethrow;
     }
   }

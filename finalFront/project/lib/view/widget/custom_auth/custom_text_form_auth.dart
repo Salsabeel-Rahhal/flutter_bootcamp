@@ -1,7 +1,7 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/input_borders/gradient_outline_input_border.dart';
 
+// ignore: must_be_immutable
 class CustomTextFormAuth extends StatelessWidget {
   CustomTextFormAuth({
     super.key,
@@ -11,7 +11,7 @@ class CustomTextFormAuth extends StatelessWidget {
     this.controller,
     this.validator,
   });
-  dynamic validator;
+  String? Function(String?)? validator;
   final String hintText;
   final String labelText;
   final IconData? iconData;

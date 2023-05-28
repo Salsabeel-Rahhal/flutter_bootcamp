@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import 'package:get/get.dart';
 import 'package:gradient_borders/input_borders/gradient_outline_input_border.dart';
-import 'package:project/controller/auth/verfication_controller.dart';
+import 'package:project/view/screen/auth/forget_password/reset_password.dart';
 import 'package:project/view/widget/custom_auth/custom_button_auth.dart';
+import 'package:project/controller/auth/verfication_controller.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:project/view/widget/custom_auth/custom_text.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
-
 import '../../../widget/custom_bars/my_app_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class VerficationPage extends StatefulWidget {
   const VerficationPage({super.key});
@@ -17,7 +17,7 @@ class VerficationPage extends StatefulWidget {
 }
 
 class _VerficationPageState extends State<VerficationPage> {
-  VerifyCodeControllerImp controller = Get.put(VerifyCodeControllerImp());
+  final controller = VerifyCodeControllerImp();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +27,7 @@ class _VerficationPageState extends State<VerficationPage> {
           child: MyAppBar(
             title: "Verfication Code",
             body: "",
-            descriotion: "",
+            description: "",
           )),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
@@ -120,7 +120,14 @@ class _VerficationPageState extends State<VerficationPage> {
               height: 80,
             ),
             CustomButtonAuth(
-                text: "Continue", onPressed: controller.goToResetPassword())
+                width: 200,
+                text: "Continue",
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ResetPage()));
+                })
           ]),
         ]),
       ),

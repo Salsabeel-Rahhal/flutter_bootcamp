@@ -15,6 +15,12 @@ class User {
         userName: json["userName"],
         phoneNumber: json["phoneNumber"]);
   }
+  Map<String, dynamic> toJsonLogin() {
+    return {
+      "email": email,
+      "password": password,
+    };
+  }
 
   Map<String, dynamic> toJson() {
     return {

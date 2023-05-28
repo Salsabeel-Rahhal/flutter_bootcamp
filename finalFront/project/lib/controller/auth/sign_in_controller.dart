@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:project/core/constant/routes.dart';
-import 'package:project/view/screen/auth/forget_password/forget_password.dart';
 
 abstract class SignInController extends GetxController {
   login();

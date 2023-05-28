@@ -1,11 +1,11 @@
-import 'dart:io';
-import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 import 'dart:convert';
+import 'dart:io';
 
 class ApiHelper {
-  final String domain = "192.168.100.9:3333";
+  final String domain = "192.168.56.1:3333";
 
   Future<String> getToken() async {
     var storage = const FlutterSecureStorage();

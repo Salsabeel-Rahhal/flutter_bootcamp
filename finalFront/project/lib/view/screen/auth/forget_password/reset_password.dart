@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:project/controller/auth/reset_password_controller.dart';
+import 'package:project/view/screen/auth/forget_password/success_reset.dart';
 import 'package:project/view/widget/custom_auth/custom_button_auth.dart';
 import 'package:project/view/widget/custom_auth/custom_text_form_auth.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -14,7 +14,7 @@ class ResetPage extends StatefulWidget {
 }
 
 class _ResetPageState extends State<ResetPage> {
-  ResetPasswordControllerImp controller = Get.put(ResetPasswordControllerImp());
+  final controller = ResetPasswordControllerImp();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +24,7 @@ class _ResetPageState extends State<ResetPage> {
           child: MyAppBar(
             title: "Reset Password",
             body: "",
-            descriotion: "",
+            description: "",
           )),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
@@ -65,7 +65,12 @@ class _ResetPageState extends State<ResetPage> {
             height: 20,
           ),
           CustomButtonAuth(
-              text: "Save", onPressed: controller.goToSuccessReset())
+              width: 200,
+              text: "Save",
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SuccessReset()));
+              })
         ]),
       ),
     );

@@ -1,4 +1,3 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import '../widget/custom_bars/bottom_bar_home.dart';
 import '../widget/custom_bars/home_app_bar.dart';
@@ -19,7 +18,7 @@ class _HomePageState extends State<HomePage> {
             preferredSize:
                 const Size.fromHeight(200.0), // here the desired height
             child: HomeAppBar(textController: controller)),
-        bottomNavigationBar: CurvedBar(),
+        bottomNavigationBar: const CurvedBar(),
         body: Container(
           child: ListView(
             children: [

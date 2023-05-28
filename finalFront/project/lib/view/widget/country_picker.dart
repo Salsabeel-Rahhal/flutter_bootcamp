@@ -19,7 +19,7 @@ class CountryCode extends StatelessWidget {
               ],
             ),
             borderRadius: BorderRadius.circular(25.0),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                   blurRadius: 5,
                   spreadRadius: 7,
@@ -27,7 +27,7 @@ class CountryCode extends StatelessWidget {
                   offset: Offset(0, 3)),
             ]),
         child: IntlPhoneField(
-          decoration: InputDecoration(label: Text("Phone Number")),
+          decoration: const InputDecoration(label: Text("Phone Number")),
           initialCountryCode: 'pk',
         ),
       ),
