@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:gradient_borders/input_borders/gradient_outline_input_border.dart';
+import 'package:project/view/widget/search.dart';
 
 import '../widget/custom_bars/home_app_bar.dart';
 import 'map2.dart';
@@ -14,66 +16,61 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
+  double zoomVal = 5.0;
   final Completer<GoogleMapController> _controller = Completer();
   final controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize:
-              const Size.fromHeight(200.0), // here the desired height
-          child: HomeAppBar(textController: controller)),
-      body: Container(
-        child: Stack(
-          children: <Widget>[
-            RoundedMap(),
-            _BuildContainer(),
-          ],
-        ),
+      // appBar: PreferredSize(
+      //     preferredSize:
+      //         const Size.fromHeight(200.0), // here the desired height
+      //     child: HomeAppBar(textController: controller)),
+      body: Stack(
+        children: <Widget>[
+          _GoogleMap(context),
+          SearchBar(textController: controller),
+          // _zoomminusfunction(),
+          // _zoomplusfunction(),
+        ],
       ),
     );
   }
 
-  Widget _BuildContainer() {
+  Widget _zoomminusfunction() {
     return Align(
-      alignment: Alignment.bottomLeft,
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 20),
-        height: 150,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: const [
-            SizedBox(
-              width: 10,
-            ),
-            // Padding(
-            //   padding: const EdgeInsets.all(8),
-            //   child: _Boxes(
-            //       "https://www.bing.com/images/search?view=detailV2&ccid=jPcJWSca&id=43A691A41CBDE2F5EA21CFB0E77534F80604CC3A&thid=OIP.jPcJWScaZ2CCzecS6Fpt4wAAAA&mediaurl=https%3a%2f%2fwww.halabazaar.com%2fuploads%2fgallery%2f4-%d8%a7%d9%81%d8%b7%d8%a7%d8%b1_%d9%85%d8%b7%d8%b9%d9%85_%d9%88%d8%b1%d8%af_%d9%81%d9%8a_%d8%b1%d9%85%d8%b6%d8%a7%d9%86_2018_-_%d8%b9%d8%b1%d9%88%d8%b6_%d8%b9%d8%b1%d8%b6_%d8%a8%d9%88%d9%81%d9%8a%d9%87_%d8%a7%d9%81%d8%b7%d8%a7%d8%b1_%d9%85%d9%81%d8%aa%d9%88%d8%ad_%d9%85%d8%b7%d8%b9%d9%85_%d9%88%d8%b1%d8%af_%d8%b1%d9%85%d8%b6%d8%a7%d9%86_2018_%d8%a7%d9%84%d8%a7%d8%b1%d8%af%d9%86_Ward_Restaurants_Ramadan_Iftar_Buffet_2018_Amman_Jordan.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.8cf70959271a676082cde712e85a6de3%3frik%3dOswEBvg0deewzw%26pid%3dImgRaw%26r%3d0&exph=316&expw=474&q=%d9%85%d8%b7%d8%b9%d9%85+%d9%88%d8%b1%d8%af&simid=608008314084070630&FORM=IRPRST&ck=7C45DD5D4263D63F725BB1E870C01218&selectedIndex=9",
-            //       30.054216,
-            //       31.337261,
-            //       "ward"),
-            // ),
-            //  Padding(
-            //   padding: const EdgeInsets.all(8),
-            //   child: _Boxes(
-            //       "https://www.bing.com/images/search?view=detailV2&ccid=jPcJWSca&id=43A691A41CBDE2F5EA21CFB0E77534F80604CC3A&thid=OIP.jPcJWScaZ2CCzecS6Fpt4wAAAA&mediaurl=https%3a%2f%2fwww.halabazaar.com%2fuploads%2fgallery%2f4-%d8%a7%d9%81%d8%b7%d8%a7%d8%b1_%d9%85%d8%b7%d8%b9%d9%85_%d9%88%d8%b1%d8%af_%d9%81%d9%8a_%d8%b1%d9%85%d8%b6%d8%a7%d9%86_2018_-_%d8%b9%d8%b1%d9%88%d8%b6_%d8%b9%d8%b1%d8%b6_%d8%a8%d9%88%d9%81%d9%8a%d9%87_%d8%a7%d9%81%d8%b7%d8%a7%d8%b1_%d9%85%d9%81%d8%aa%d9%88%d8%ad_%d9%85%d8%b7%d8%b9%d9%85_%d9%88%d8%b1%d8%af_%d8%b1%d9%85%d8%b6%d8%a7%d9%86_2018_%d8%a7%d9%84%d8%a7%d8%b1%d8%af%d9%86_Ward_Restaurants_Ramadan_Iftar_Buffet_2018_Amman_Jordan.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.8cf70959271a676082cde712e85a6de3%3frik%3dOswEBvg0deewzw%26pid%3dImgRaw%26r%3d0&exph=316&expw=474&q=%d9%85%d8%b7%d8%b9%d9%85+%d9%88%d8%b1%d8%af&simid=608008314084070630&FORM=IRPRST&ck=7C45DD5D4263D63F725BB1E870C01218&selectedIndex=9",
-            //       30.054216,
-            //       31.337261,
-            //       "ward"),
-            //  ),
-            // Padding(
-            //   padding: const EdgeInsets.all(8),
-            //   child: _Boxes(
-            //       "https://www.bing.com/images/search?view=detailV2&ccid=jPcJWSca&id=43A691A41CBDE2F5EA21CFB0E77534F80604CC3A&thid=OIP.jPcJWScaZ2CCzecS6Fpt4wAAAA&mediaurl=https%3a%2f%2fwww.halabazaar.com%2fuploads%2fgallery%2f4-%d8%a7%d9%81%d8%b7%d8%a7%d8%b1_%d9%85%d8%b7%d8%b9%d9%85_%d9%88%d8%b1%d8%af_%d9%81%d9%8a_%d8%b1%d9%85%d8%b6%d8%a7%d9%86_2018_-_%d8%b9%d8%b1%d9%88%d8%b6_%d8%b9%d8%b1%d8%b6_%d8%a8%d9%88%d9%81%d9%8a%d9%87_%d8%a7%d9%81%d8%b7%d8%a7%d8%b1_%d9%85%d9%81%d8%aa%d9%88%d8%ad_%d9%85%d8%b7%d8%b9%d9%85_%d9%88%d8%b1%d8%af_%d8%b1%d9%85%d8%b6%d8%a7%d9%86_2018_%d8%a7%d9%84%d8%a7%d8%b1%d8%af%d9%86_Ward_Restaurants_Ramadan_Iftar_Buffet_2018_Amman_Jordan.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.8cf70959271a676082cde712e85a6de3%3frik%3dOswEBvg0deewzw%26pid%3dImgRaw%26r%3d0&exph=316&expw=474&q=%d9%85%d8%b7%d8%b9%d9%85+%d9%88%d8%b1%d8%af&simid=608008314084070630&FORM=IRPRST&ck=7C45DD5D4263D63F725BB1E870C01218&selectedIndex=9",
-            //       30.054216,
-            //       31.337261,
-            //       "ward"),
-            // )
-          ],
-        ),
-      ),
+      alignment: Alignment.topLeft,
+      child: IconButton(
+          icon: Icon(Icons.zoom_out_map_outlined, color: Color(0xff6200ee)),
+          onPressed: () {
+            zoomVal--;
+            _minus(zoomVal);
+          }),
     );
+  }
+
+  Widget _zoomplusfunction() {
+    return Align(
+      alignment: Alignment.topRight,
+      child: IconButton(
+          icon: Icon(Icons.zoom_in_map_outlined, color: Color(0xff6200ee)),
+          onPressed: () {
+            zoomVal++;
+            _plus(zoomVal);
+          }),
+    );
+  }
+
+  Future<void> _minus(double zoomVal) async {
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(target: LatLng(40.712776, -74.005974), zoom: zoomVal)));
+  }
+
+  Future<void> _plus(double zoomVal) async {
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(target: LatLng(40.712776, -74.005974), zoom: zoomVal)));
   }
 
   Widget _GoogleMap(BuildContext context) {
@@ -87,7 +84,13 @@ class _MapPageState extends State<MapPage> {
           onMapCreated: (GoogleMapController controller) {
             _controller.complete(controller);
           },
-          markers: {myMarker, myMarker1}),
+          markers: {
+            myMarker,
+            myMarker1,
+            gramercyMarker,
+            bernardinMarker,
+            blueMarker
+          }),
     );
   }
 }
@@ -108,4 +111,29 @@ Marker myMarker1 = Marker(
     title: "alreem",
   ),
   icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet),
+);
+Marker gramercyMarker = Marker(
+  markerId: MarkerId('gramercy'),
+  position: LatLng(40.738380, -73.988426),
+  infoWindow: InfoWindow(title: 'Gramercy Tavern'),
+  icon: BitmapDescriptor.defaultMarkerWithHue(
+    BitmapDescriptor.hueViolet,
+  ),
+);
+
+Marker bernardinMarker = Marker(
+  markerId: MarkerId('bernardin'),
+  position: LatLng(40.761421, -73.981667),
+  infoWindow: InfoWindow(title: 'Le Bernardin'),
+  icon: BitmapDescriptor.defaultMarkerWithHue(
+    BitmapDescriptor.hueViolet,
+  ),
+);
+Marker blueMarker = Marker(
+  markerId: MarkerId('bluehill'),
+  position: LatLng(40.732128, -73.999619),
+  infoWindow: InfoWindow(title: 'Blue Hill'),
+  icon: BitmapDescriptor.defaultMarkerWithHue(
+    BitmapDescriptor.hueViolet,
+  ),
 );

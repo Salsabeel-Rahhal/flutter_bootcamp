@@ -16,7 +16,7 @@ class HomeAppBar extends StatelessWidget {
               },
               icon: const Icon(
                 Icons.account_circle_rounded,
-                size: 30,
+                size: 25,
               )),
           centerTitle: true,
           backgroundColor: Colors.transparent,

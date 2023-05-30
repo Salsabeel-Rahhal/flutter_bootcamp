@@ -7,6 +7,7 @@ import 'package:project/view/screen/auth/sign_in_page.dart';
 import 'package:project/view/screen/auth/sign_up_page.dart';
 import 'package:project/view/screen/auth/success_sign_up.dart';
 import 'package:project/view/screen/home_page.dart';
+import 'package:project/view/screen/login.dart';
 import 'package:project/view/screen/map2.dart';
 import 'package:project/view/screen/map_page.dart';
 import 'package:project/view/screen/on_boarding_page.dart';
@@ -28,6 +29,6 @@ class MyApp extends StatelessWidget {
             primaryColor: Colors.purple.shade900,
             primarySwatch: Colors.purple),
         // supportedLocales: L10n.all,
-        home: RoundedMap());
+        home: HomePage());
   }
 }

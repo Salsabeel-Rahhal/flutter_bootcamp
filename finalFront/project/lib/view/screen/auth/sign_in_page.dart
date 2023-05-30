@@ -18,15 +18,45 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  bool _isObscure = true;
   final _keyForm = GlobalKey<FormState>();
   final _controllerEmail = TextEditingController();
   final _controllerPassword = TextEditingController();
   final String body = "";
   final String desc = "";
+  Future<void> _handleSignInAction(BuildContext context) async {
+    if (_keyForm.currentState != null && _keyForm.currentState!.validate()) {
+      String email = _controllerEmail.text;
+      String password = _controllerPassword.text;
+
+      // User user = User(
+      //   email: email,
+      //   password: password,
+      // );
+
+      try {
+        EasyLoading.show(status: "Loading");
+        await UserController().signIn(email, password);
+        EasyLoading.dismiss();
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
+        // return true; // sign-in was successful
+      } catch (ex) {
+        EasyLoading.dismiss();
+        EasyLoading.showError(ex.toString());
+        // return false; // sign-in failed
+      }
+    }
+    // return false; // form validation failed
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(200.0),
         child: MyAppBar(
@@ -118,32 +148,44 @@ class _SignInPageState extends State<SignInPage> {
                           }
                           return null;
                         },
+                        obscureText: _isObscure,
                         decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.symmetric(
-                            vertical: 8,
-                            horizontal: 30,
-                          ),
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          label: const Text(
-                            "Password",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          hintText: "Enter your password",
-                          hintStyle: const TextStyle(fontSize: 15),
-                          suffixIcon: const Icon(
-                            Icons.password_outlined,
-                            size: 18,
-                          ),
-                          border: GradientOutlineInputBorder(
-                            gradient: const LinearGradient(
-                              colors: [
-                                Color.fromARGB(255, 74, 20, 140),
-                                Color.fromARGB(255, 6, 122, 51),
-                              ],
+                            contentPadding: const EdgeInsets.symmetric(
+                              vertical: 8,
+                              horizontal: 30,
                             ),
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
+                            floatingLabelBehavior: FloatingLabelBehavior.always,
+                            label: const Text(
+                              "Password",
+                              style: TextStyle(fontSize: 15),
+                            ),
+                            hintText: "Enter your password",
+                            hintStyle: const TextStyle(fontSize: 15),
+                            // suffixIcon: const Icon(
+                            //   Icons.password_outlined,
+                            //   size: 18,
+                            // ),
+                            border: GradientOutlineInputBorder(
+                              gradient: const LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 74, 20, 140),
+                                  Color.fromARGB(255, 6, 122, 51),
+                                ],
+                              ),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            suffixIcon: IconButton(
+                                icon: Icon(
+                                  _isObscure
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                  size: 20,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _isObscure = !_isObscure;
+                                  });
+                                })),
                       ),
                     ),
                     Container(
@@ -161,8 +203,10 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                       child: MaterialButton(
                         padding: const EdgeInsets.symmetric(vertical: 15),
-                        onPressed: () async {
-                          await _handleSignInAction(context);
+                        onPressed: () {
+                          if (_keyForm.currentState!.validate()) {
+                            _handleSignInAction(context);
+                          }
                         },
                         child: const Text(
                           " Sign In",
@@ -193,34 +237,5 @@ class _SignInPageState extends State<SignInPage> {
         ),
       ),
     );
-  }
-
-  Future<void> _handleSignInAction(BuildContext context) async {
-    if (_keyForm.currentState != null && _keyForm.currentState!.validate()) {
-      String email = _controllerEmail.text;
-      String password = _controllerPassword.text;
-
-      User user = User(
-        email: email,
-        password: password,
-      );
-
-      try {
-        EasyLoading.show(status: "Loading");
-        await UserController().signIn(user);
-        EasyLoading.dismiss();
-        // ignore: use_build_context_synchronously
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const HomePage()),
-        );
-        // return true; // sign-in was successful
-      } catch (ex) {
-        EasyLoading.dismiss();
-        EasyLoading.showError(ex.toString());
-        // return false; // sign-in failed
-      }
-    }
-    // return false; // form validation failed
   }
 }
