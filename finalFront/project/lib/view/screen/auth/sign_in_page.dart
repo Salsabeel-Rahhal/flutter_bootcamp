@@ -1,8 +1,8 @@
 import 'package:gradient_borders/input_borders/gradient_outline_input_border.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:project/main.dart';
 import 'package:project/view/screen/auth/sign_up_page.dart';
 import 'package:email_validator/email_validator.dart';
-import '../../../data/model/user_model.dart';
 import '../../widget/custom_auth/custom_text.dart';
 import '../../widget/custom_bars/my_app_bar.dart';
 import '../../../controller/user_controller.dart';
@@ -24,24 +24,20 @@ class _SignInPageState extends State<SignInPage> {
   final _controllerPassword = TextEditingController();
   final String body = "";
   final String desc = "";
-  Future<void> _handleSignInAction(BuildContext context) async {
+
+  _handleSignInAction(BuildContext context) {
     if (_keyForm.currentState != null && _keyForm.currentState!.validate()) {
       String email = _controllerEmail.text;
       String password = _controllerPassword.text;
 
-      // User user = User(
-      //   email: email,
-      //   password: password,
-      // );
-
       try {
         EasyLoading.show(status: "Loading");
-        await UserController().signIn(email, password);
+        UserController().signIn(email, password);
         EasyLoading.dismiss();
 
-        Navigator.pushReplacement(
+        Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => HomePage()),
+          MaterialPageRoute(builder: (context) => SplachPage()),
         );
         // return true; // sign-in was successful
       } catch (ex) {
@@ -224,13 +220,13 @@ class _SignInPageState extends State<SignInPage> {
               CustomText(
                 textOne: "",
                 textTwo: "Forget Password ? ",
-                onTap: const ForgetPassword(),
+                onTap1: ForgetPassword(),
               ),
               const SizedBox(height: 20),
               CustomText(
                 textOne: "Don't have an account ?",
                 textTwo: " Sign Up",
-                onTap: const SignUpPage(),
+                onTap1: const SignUpPage(),
               ),
             ],
           ),

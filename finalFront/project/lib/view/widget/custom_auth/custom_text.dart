@@ -7,12 +7,14 @@ class CustomText extends StatelessWidget {
     super.key,
     this.textOne,
     required this.textTwo,
-    required this.onTap,
+    this.onTap,
+    this.onTap1,
   });
   String? textOne;
   final String textTwo;
 
-  Widget onTap;
+  void Function()? onTap;
+  Widget? onTap1;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -30,8 +32,9 @@ class CustomText extends StatelessWidget {
             Color.fromARGB(255, 6, 122, 51)
           ]),
           onTap: () {
+            onTap;
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => onTap));
+                context, MaterialPageRoute(builder: (context) => onTap1!));
           },
         ),
       ],

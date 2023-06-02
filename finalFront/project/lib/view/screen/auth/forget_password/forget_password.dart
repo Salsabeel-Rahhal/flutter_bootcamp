@@ -71,7 +71,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const VerficationPage()));
+                          builder: (context) => const ForgetPassword()));
                 }),
             const SizedBox(
               height: 50,

@@ -1,39 +1,138 @@
 import 'dart:async';
 
+import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:gradient_borders/input_borders/gradient_outline_input_border.dart';
 import 'package:project/view/widget/search.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../data/model/auto_complete.dart';
+import '../../providers/search_places.dart';
+import '../../services/map_services.dart';
 import '../widget/custom_bars/home_app_bar.dart';
-import 'map2.dart';
 
-class MapPage extends StatefulWidget {
+class MapPage extends ConsumerStatefulWidget {
   MapPage({super.key});
 
   @override
-  State<MapPage> createState() => _MapPageState();
+  ConsumerState<ConsumerStatefulWidget> createState() {
+    throw UnimplementedError();
+  }
 }
 
-class _MapPageState extends State<MapPage> {
+class _MapPageState extends ConsumerState<MapPage> {
   double zoomVal = 5.0;
   final Completer<GoogleMapController> _controller = Completer();
-  final controller = TextEditingController();
+  TextEditingController searchController = TextEditingController();
+  List allFavoritePlaces = [];
+  bool searchToggle = true;
+  bool raduisSlider = false;
+  bool pressedNear = false;
+  bool cardTapped = false;
+  bool getDirections = false;
+
+  Timer? _debounce;
+  Set<Marker> _markers = Set<Marker>();
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final allSearchResults = ref.watch(placeResultsProvider);
+    final searchFlag = ref.watch(searchToggleProvider);
     return Scaffold(
-      // appBar: PreferredSize(
-      //     preferredSize:
-      //         const Size.fromHeight(200.0), // here the desired height
-      //     child: HomeAppBar(textController: controller)),
-      body: Stack(
-        children: <Widget>[
-          _GoogleMap(context),
-          SearchBar(textController: controller),
-          // _zoomminusfunction(),
-          // _zoomplusfunction(),
-        ],
+      body: SingleChildScrollView(
+        child: Stack(
+          children: <Widget>[
+            _GoogleMap(context),
+            // SearchBar(textController: searchController),
+            searchToggle
+                ? Padding(
+                    padding: const EdgeInsets.fromLTRB(15, 40, 15, 5),
+                    child: Column(
+                      children: [
+                        Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                            ),
+                            child: TextFormField(
+                              controller: searchController,
+                              decoration: InputDecoration(
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 20.0, vertical: 15.0),
+                                  border: InputBorder.none,
+                                  hintText: 'Search',
+                                  suffixIcon: IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          searchToggle = false;
+                                          searchController.text = '';
+                                        });
+                                      },
+                                      icon: const Icon(Icons.close))),
+                              onChanged: (value) {
+                                if (_debounce?.isActive ?? false)
+                                  _debounce?.cancel();
+                                _debounce =
+                                    Timer(const Duration(milliseconds: 700),
+                                        () async {
+                                  if (value.length > 2) {
+                                    if (!searchFlag.searchToggle) {
+                                      searchFlag.toggleSearch();
+                                      _markers = {};
+                                    }
+
+                                    List<AutoCompleteResult> searchResults =
+                                        await MapServices().searchPlaces(value);
+
+                                    allSearchResults.setResults(searchResults);
+                                  } else {
+                                    List<AutoCompleteResult> emptyList = [];
+                                    allSearchResults.setResults(emptyList);
+                                  }
+                                });
+                              },
+                            ))
+                      ],
+                    ),
+                  )
+                : Container(),
+
+            // _zoomminusfunction(),
+            // _zoomplusfunction(),
+          ],
+        ),
       ),
+      floatingActionButton: FabCircularMenu(
+          alignment: Alignment.bottomLeft,
+          fabColor: Colors.white,
+          fabOpenColor: Colors.green.shade300,
+          ringDiameter: 250,
+          ringWidth: 60,
+          ringColor: Colors.green.shade300,
+          fabSize: 60,
+          children: [
+            IconButton(
+                onPressed: () {
+                  setState(() {
+                    searchToggle = true;
+                    raduisSlider = false;
+                    pressedNear = false;
+                    cardTapped = false;
+                    getDirections = false;
+                  });
+                },
+                icon: const Icon(Icons.search)),
+            IconButton(
+                onPressed: () {
+                  setState(() {});
+                },
+                icon: const Icon(Icons.navigation))
+          ]),
     );
   }
 
@@ -114,7 +213,7 @@ Marker myMarker1 = Marker(
 );
 Marker gramercyMarker = Marker(
   markerId: MarkerId('gramercy'),
-  position: LatLng(40.738380, -73.988426),
+  position: LatLng(30.738380, 31.988426),
   infoWindow: InfoWindow(title: 'Gramercy Tavern'),
   icon: BitmapDescriptor.defaultMarkerWithHue(
     BitmapDescriptor.hueViolet,

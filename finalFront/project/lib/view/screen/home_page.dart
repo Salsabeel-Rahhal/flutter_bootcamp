@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -24,33 +25,50 @@ class _HomePageState extends State<HomePage> {
       apiKey: " AIzaSyDrGn--NujM3CHoOveNb-Xx4JNafXicakQ");
   // final placeholder= Plac
   final controller = TextEditingController();
-  final pageView = PageController();
-  int index = 0;
+  final pageController = PageController();
+  final key = '<AIzaSyDrGn--NujM3CHoOveNb-Xx4JNafXicakQ>';
+  TextEditingController searchController = TextEditingController();
+
+  bool searchToggle = true;
+  bool raduisSlider = false;
+  bool pressedNear = false;
+  bool cardTapped = false;
+  bool getDirections = false;
+  final List<Widget> _pages = [
+    // Add your pages here
+    SettingPage(),
+    FavoritePage(),
+    HomePage(),
+    ReservationPage(),
+    MapPage(),
+  ];
+  int _currentPage = 2;
   double zoomVal = 5.0;
+  String placeImg = '';
   @override
   void initState() {
     super.initState();
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _currentPage = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize:
-              const Size.fromHeight(200.0), // here the desired height
+          preferredSize: Size.fromHeight(200.0), // here the desired height
           child: HomeAppBar(textController: controller)),
-      bottomNavigationBar: _createBottomNavigationBar(),
-      body: Align(
-        alignment: Alignment.center,
+      body: Center(
         child: Container(
-          // margin: const EdgeInsets.symmetric(vertical: 10),
+          margin: const EdgeInsets.symmetric(vertical: 10),
           height: double.infinity,
           child: ListView(
             scrollDirection: Axis.vertical,
             children: [
-              const SizedBox(
-                width: 10,
-              ),
               Padding(
                 padding: const EdgeInsets.all(8),
                 child: Boxes(
@@ -74,7 +92,33 @@ class _HomePageState extends State<HomePage> {
                     30.054216,
                     31.337261,
                     "ward"),
-              )
+              ),
+              // FabCircularMenu(
+              //     alignment: Alignment.bottomLeft,
+              //     fabColor: Colors.white,
+              //     fabOpenColor: Colors.white,
+              //     ringDiameter: 250,
+              //     ringWidth: 60,
+              //     ringColor: Colors.green.shade200,
+              //     fabSize: 60,
+              //     children: [
+              //       IconButton(
+              //           onPressed: () {
+              //             setState(() {
+              //               searchToggle = true;
+              //               raduisSlider = false;
+              //               pressedNear = false;
+              //               cardTapped = false;
+              //               getDirections = false;
+              //             });
+              //           },
+              //           icon: Icon(Icons.search)),
+              //       IconButton(
+              //           onPressed: () {
+              //             setState(() {});
+              //           },
+              //           icon: Icon(Icons.navigation))
+              //     ]),
             ],
           ),
         ),
@@ -206,9 +250,11 @@ class _HomePageState extends State<HomePage> {
                   height: 200,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(24.0),
-                    child: const Image(
+                    child: Image(
                       image: NetworkImage(
-                        "https://www.bing.com/images/search?view=detailV2&ccid=3V2fvdA6&id=4DB6231A6C29DC2E11CDC0047CD195E9C88C786B&thid=OIP.3V2fvdA6O0fSG6qGMyMeZwHaEo&mediaurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.dd5d9fbdd03a3b47d21baa8633231e67%3frik%3da3iMyOmV0XwEwA%26riu%3dhttp%253a%252f%252fwww.baltana.com%252ffiles%252fwallpapers-2%252fFood-HD-Wallpapers-04864.jpg%26ehk%3doCGq87EnzGa53wpyGPk3aNhI03hKYPPWLQVzqCKdPe0%253d%26risl%3d%26pid%3dImgRaw%26r%3d0&exph=1200&expw=1920&q=food+image&simid=608054948848819158&FORM=IRPRST&ck=1FEC8BF221DE0BED4E8D16F71A90E908&selectedIndex=12",
+                        placeImg != ''
+                            ? 'https://maps.googleapis.com/maps/api/place/photo?parameters&photo_reference=$placeImg&key=$key&maxwidth=400'
+                            : 'https://pic.onlinewebfonts.com/svg/img_546302.png',
                       ),
                       fit: BoxFit.fill,
                     ),
@@ -226,55 +272,60 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _createBottomNavigationBar() {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Color.fromARGB(255, 74, 20, 140),
-            Color.fromARGB(255, 182, 153, 217)
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.topRight,
-          // stops: [0.0, 0.8],
-          tileMode: TileMode.clamp,
-        ),
-      ),
-      child: BottomNavigationBar(
-        currentIndex: 0,
-        onTap: (index) {},
-        showUnselectedLabels: false,
-        backgroundColor: Colors.transparent,
-        type: BottomNavigationBarType.fixed,
-        elevation: 0,
-        unselectedItemColor: Colors.white,
-        selectedIconTheme: const IconThemeData(color: Colors.white),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              size: 22,
-            ),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite, size: 22),
-            label: "Favorite",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings, size: 22),
-            label: "Settings",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month, size: 22),
-            label: "Reservations",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.location_city, size: 22),
-            label: "Map",
-          ),
-        ],
-      ),
-    );
-  }
+//   Widget _createBottomNavigationBar() {
+//     return Container(
+//       decoration: const BoxDecoration(
+//         gradient: LinearGradient(
+//           colors: [
+//             Color.fromARGB(255, 74, 20, 140),
+//             Color.fromARGB(255, 182, 153, 217)
+//           ],
+//           begin: Alignment.topLeft,
+//           end: Alignment.topRight,
+//           // stops: [0.0, 0.8],
+//           tileMode: TileMode.clamp,
+//         ),
+//       ),
+//       child: BottomNavigationBar(
+//         selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+//         fixedColor: Colors.white,
+//         currentIndex: _currentPage,
+//         onTap: (index) {
+//           _onItemTapped(index);
+//           print(index);
+//         },
+//         showUnselectedLabels: false,
+//         backgroundColor: Colors.transparent,
+//         type: BottomNavigationBarType.fixed,
+//         elevation: 0,
+//         unselectedItemColor: Colors.white,
+//         selectedIconTheme: const IconThemeData(color: Colors.greenAccent),
+//         items: const [
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.settings, size: 22),
+//             label: "Settings",
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.favorite, size: 22),
+//             label: "Favorite",
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(
+//               Icons.home,
+//               size: 22,
+//             ),
+//             label: "Home",
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.calendar_month, size: 22),
+//             label: "Reservations",
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.location_on, size: 22),
+//             label: "Map",
+//           ),
+//         ],
+//       ),
+//     );
+//   }}
 }

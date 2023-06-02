@@ -8,6 +8,7 @@ import 'package:simple_gradient_text/simple_gradient_text.dart';
 import '../../../widget/custom_bars/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'dart:async';
 
 class VerficationPage extends StatefulWidget {
   const VerficationPage({super.key});
@@ -18,6 +19,39 @@ class VerficationPage extends StatefulWidget {
 
 class _VerficationPageState extends State<VerficationPage> {
   final controller = VerifyCodeControllerImp();
+
+  Timer? _timer;
+  int _remainingTime = 60;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _startTimer();
+  }
+
+  void _startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_remainingTime > 0) {
+          _remainingTime--;
+        } else {
+          _timer?.cancel();
+        }
+      });
+    });
+  }
+
+  void _resendCode() {
+    // reset remaining time to 60 seconds
+    _remainingTime = 60;
+
+    // start the timer again
+    _startTimer();
+
+    // TODO: send a new verification code
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +78,10 @@ class _VerficationPageState extends State<VerficationPage> {
                 Color.fromARGB(255, 6, 122, 51)
               ]),
               CustomText(
-                  textOne: "", textTwo: "Re-send Code", onTap: const Text(""))
+                textOne: "",
+                textTwo: "Re-send Code",
+                onTap: (_remainingTime == 0) ? _resendCode : null,
+              )
             ],
           ),
           const SizedBox(
@@ -108,12 +145,12 @@ class _VerficationPageState extends State<VerficationPage> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 Text(
-                  " You can re-send the code after 30 minute's",
+                  " You can re-send the code after $_remainingTime",
                   style: TextStyle(color: Colors.grey),
                 ),
-                Text("03:05 ", style: TextStyle(color: Colors.grey)),
+                Text("$_timer ", style: TextStyle(color: Colors.grey)),
               ],
             ),
             const SizedBox(

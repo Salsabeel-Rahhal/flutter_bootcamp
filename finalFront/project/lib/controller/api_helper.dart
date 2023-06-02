@@ -1,14 +1,16 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:http/http.dart' as http;
-import 'package:dio/dio.dart';
-import 'dart:convert';
+import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:dio/dio.dart';
+
 class ApiHelper {
-  final String domain = "192.168.56.1:3333";
+  final String DOMAIN = "192.168.100.166:3333";
 
   Future<String> getToken() async {
-    var storage = const FlutterSecureStorage();
+    var storage = FlutterSecureStorage();
     bool check = await storage.containsKey(key: "token");
     if (check) {
       String result = await storage.read(key: "token") as String;
@@ -18,7 +20,7 @@ class ApiHelper {
   }
 
   Future<dynamic> getRequest(String path) async {
-    Uri uriFunction = Uri.http(domain, path);
+    Uri uriFunction = Uri.http(DOMAIN, path);
     var token = await getToken();
     var headers = {"Authorization": token};
     http.Response resposne = await http.get(uriFunction, headers: headers);
@@ -26,14 +28,19 @@ class ApiHelper {
   }
 
   Future<dynamic> postRequest(String path, Map body) async {
-    Uri uriFunction = Uri.http(domain, path);
+    Uri uriFunction = Uri.http(DOMAIN, path);
+    timeout:
+    const Duration(seconds: 10);
+    print(TimeoutException);
     http.Response resposne = await http.post(uriFunction, body: body);
     return resposneFunction(resposne);
   }
 
   Future<dynamic> putRequest(String path, Map body) async {
-    Uri uriFunction = Uri.http(domain, path);
+    Uri uriFunction = Uri.http(DOMAIN, path);
     var token = await getToken();
+    timeout:
+    const Duration(seconds: 10);
     var headers = {"Authorization": token};
     http.Response resposne =
         await http.put(uriFunction, body: body, headers: headers);
@@ -70,7 +77,7 @@ class ApiHelper {
     var headers = {"Authorization": token};
 
     Response response = await dio.post(
-      'http://$domain$path',
+      'http://$DOMAIN$path',
       data: body,
       options: Options(
         headers: headers,
@@ -108,7 +115,7 @@ class ApiHelper {
           filename: file.path.split("/").last)
     });
     Response response = await dio.post(
-      'http://$domain$urlPath',
+      'http://$DOMAIN$urlPath',
       data: formData,
       options: Options(
         headers: headers,

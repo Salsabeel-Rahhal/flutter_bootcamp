@@ -1,42 +1,84 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:project/view/screen/favorite_page.dart';
+import 'package:project/view/screen/home_page.dart';
+import 'package:project/view/screen/map_page.dart';
+import 'package:project/view/screen/resrvations_page.dart';
+import 'package:project/view/screen/setting_page.dart';
 
-class CurvedBar extends StatelessWidget {
-  const CurvedBar({super.key, required this.page});
-  final PageController page;
+class MyBottomNavigationBar extends StatefulWidget {
+  @override
+  _MyBottomNavigationBarState createState() => _MyBottomNavigationBarState();
+}
+
+class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
+  int _currentIndex = 2;
+
+  final List<Widget> _pages = [
+    // Add your pages here
+    SettingPage(),
+    FavoritePage(),
+    HomePage(),
+    ReservationPage(),
+    MapPage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    int currentIndex = 0;
-    GlobalKey<CurvedNavigationBarState> bottomNavigationKey = GlobalKey();
-    return Stack(children: [
-      CurvedNavigationBar(
-        height: 50,
-        key: bottomNavigationKey,
-        animationDuration: const Duration(milliseconds: 500),
-        backgroundColor: Colors.transparent,
-        animationCurve: Curves.easeInOut,
-        color: Color.fromARGB(255, 129, 61, 212),
-        items: const [
-          Icon(
-            Icons.settings,
-            color: Colors.white,
-            size: 22,
+    return Scaffold(
+      body: _pages[_currentIndex],
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 74, 20, 140),
+              Color.fromARGB(255, 182, 153, 217)
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.topRight,
+            // stops: [0.0, 0.8],
+            tileMode: TileMode.clamp,
           ),
-          Icon(Icons.favorite, color: Colors.white, size: 22),
-          Icon(
-            Icons.home,
-            color: Colors.white,
-            size: 22,
-          ),
-          Icon(Icons.calendar_month, color: Colors.white, size: 22),
-          Icon(Icons.location_on_outlined, color: Colors.white, size: 22),
-        ],
-        onTap: (Index) {
-          currentIndex = Index;
-          print("cuurent index is $Index");
-        },
+        ),
+        child: BottomNavigationBar(
+          selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+          fixedColor: Colors.white,
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            _currentIndex = index;
+          },
+          showUnselectedLabels: false,
+          backgroundColor: Colors.transparent,
+          type: BottomNavigationBarType.fixed,
+          elevation: 0,
+          unselectedItemColor: Colors.white,
+          selectedIconTheme: const IconThemeData(color: Colors.greenAccent),
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings, size: 22),
+              label: "Settings",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.favorite, size: 22),
+              label: "Favorite",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+                size: 22,
+              ),
+              label: "Home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_month, size: 22),
+              label: "Reservations",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.location_on, size: 22),
+              label: "Map",
+            ),
+          ],
+        ),
       ),
-    ]);
+    );
   }
 }

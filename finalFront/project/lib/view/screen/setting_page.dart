@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widget/custom_bars/my_app_bar.dart';
+
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
 
@@ -10,6 +12,16 @@ class SettingPage extends StatefulWidget {
 class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(200.0),
+        child: MyAppBar(
+          title: "Settings",
+          body: "",
+          description: "",
+        ),
+      ),
+    );
   }
 }

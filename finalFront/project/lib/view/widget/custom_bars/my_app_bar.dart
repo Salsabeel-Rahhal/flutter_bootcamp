@@ -16,6 +16,7 @@ class MyAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.transparent,
@@ -50,8 +51,9 @@ class MyAppBar extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const CircleAvatar(
-                      backgroundImage:
-                          AssetImage("assets/images/onboardingone.png"),
+                      backgroundImage: AssetImage(
+                        "assets/images/onboardingone.png",
+                      ),
                       radius: 75,
                     ),
                     const SizedBox(

@@ -34,12 +34,23 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
       ),
       body: Container(
-        margin: const EdgeInsets.only(top: 12),
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 35),
         child: Container(
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(10),
           child: ListView(
             children: [
+              const Text(
+                " Welcome To Macan Family ",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 23,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               CustomTextFormAuth(
                 hintText: "Enter your user name",
                 labelText: "User Name",
@@ -128,7 +139,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: CustomText(
                   textOne: "have an account ?",
                   textTwo: " Sign In",
-                  onTap: const SignInPage(),
+                  onTap1: const SignInPage(),
                 ),
               ),
             ],
