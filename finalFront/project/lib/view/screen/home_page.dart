@@ -8,7 +8,6 @@ import 'package:project/view/screen/favorite_page.dart';
 import 'package:project/view/screen/map_page.dart';
 import 'package:project/view/screen/resrvations_page.dart';
 import 'package:project/view/screen/setting_page.dart';
-import '../widget/custom_bars/bottom_bar_home.dart';
 import '../widget/custom_bars/home_app_bar.dart';
 
 class HomePage extends StatefulWidget {

@@ -22,8 +22,6 @@ class _SignInPageState extends State<SignInPage> {
   final _keyForm = GlobalKey<FormState>();
   final _controllerEmail = TextEditingController();
   final _controllerPassword = TextEditingController();
-  final String body = "";
-  final String desc = "";
 
   _handleSignInAction(BuildContext context) {
     if (_keyForm.currentState != null && _keyForm.currentState!.validate()) {
@@ -57,8 +55,9 @@ class _SignInPageState extends State<SignInPage> {
         preferredSize: const Size.fromHeight(200.0),
         child: MyAppBar(
           title: "Sign In",
-          body: body,
-          description: desc,
+          image: AssetImage(
+            "assets/images/onboardingone.png",
+          ),
         ),
       ),
       body: Container(

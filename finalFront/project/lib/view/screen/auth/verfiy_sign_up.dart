@@ -33,8 +33,9 @@ class _VerfiyCodeSignUpState extends State<VerfiyCodeSignUp> {
         preferredSize: const Size.fromHeight(200.0),
         child: MyAppBar(
           title: "Verification Code",
-          body: "",
-          description: "",
+          image: AssetImage(
+            "assets/images/onboardingone.png",
+          ),
         ),
       ),
       body: Padding(

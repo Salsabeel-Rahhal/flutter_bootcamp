@@ -25,8 +25,9 @@ class _SuccessSignUpState extends State<SuccessSignUp> {
         preferredSize: const Size.fromHeight(200.0),
         child: MyAppBar(
           title: "Success Sign Up",
-          body: "",
-          description: "",
+          image: AssetImage(
+            "assets/images/onboardingone.png",
+          ),
         ),
       ),
       body: Container(

@@ -121,41 +121,41 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-// Widget Boxes(double lat, double long, String restaurantName) {
-//   return GestureDetector(
-//     onTap: () {},
-//     child: FittedBox(
-//       child: Material(
-//           color: Colors.white,
-//           elevation: 14.0,
-//           borderRadius: BorderRadius.circular(24.0),
-//           shadowColor: const Color(0x802196F3),
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: <Widget>[
-//               Container(
-//                 width: 180,
-//                 height: 200,
-//                 child: ClipRRect(
-//                   borderRadius: BorderRadius.circular(24.0),
-//                   // child: Image(
-//                   //   image: NetworkImage(
+Widget Boxes(double lat, double long, String restaurantName) {
+  return GestureDetector(
+    onTap: () {},
+    child: FittedBox(
+      child: Material(
+          color: Colors.white,
+          elevation: 14.0,
+          borderRadius: BorderRadius.circular(24.0),
+          shadowColor: const Color(0x802196F3),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                width: 180,
+                height: 200,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(24.0),
+                  // child: Image(
+                  //   image: NetworkImage(
 
-//                   //         // ? 'https://maps.googleapis.com/maps/api/place/photo?parameters&photo_reference=$placeImg&key=$key&maxwidth=400'
-//                   //         // : 'https://pic.onlinewebfonts.com/svg/img_546302.png',
-//                   //   ),
-//                   //   fit: BoxFit.fill,
-//                   // ),
-//                 ),
-//               ),
-//               // Container(
-//               //   child: Padding(
-//               //     padding: const EdgeInsets.all(8.0),
-//               //     child: myDetailsContainer1(restaurantName),
-//               //   ),
-//               // ),
-//             ],
-//           )),
-//     ),
-//   );
-// }
+                  //         // ? 'https://maps.googleapis.com/maps/api/place/photo?parameters&photo_reference=$placeImg&key=$key&maxwidth=400'
+                  //         // : 'https://pic.onlinewebfonts.com/svg/img_546302.png',
+                  //   ),
+                  //   fit: BoxFit.fill,
+                  // ),
+                ),
+              ),
+              // Container(
+              //   child: Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: myDetailsContainer1(restaurantName),
+              //   ),
+              // ),
+            ],
+          )),
+    ),
+  );
+}

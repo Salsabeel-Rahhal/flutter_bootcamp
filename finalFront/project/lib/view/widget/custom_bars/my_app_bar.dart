@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:project/view/screen/setting_page.dart';
 
 // ignore: must_be_immutable
 class MyAppBar extends StatelessWidget {
   MyAppBar(
       {super.key,
-      required this.body,
-      required this.description,
-      required this.title});
-  final String title;
-  final String body;
-  final String description;
-  ImageProvider<Object>? image;
+      this.body,
+      this.description,
+      this.title,
+      this.icon,
+      this.image});
+  final String? title;
+  final String? body;
+  final String? description;
+  final ImageProvider<Object>? image;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +34,14 @@ class MyAppBar extends StatelessWidget {
               color: Colors.white,
               size: 15,
             )),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SettingPage()));
+              },
+              icon: icon!)
+        ],
       ),
       body: ClipPath(
         clipper: MyCustomClipper(),
@@ -50,17 +62,15 @@ class MyAppBar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const CircleAvatar(
-                      backgroundImage: AssetImage(
-                        "assets/images/onboardingone.png",
-                      ),
+                    CircleAvatar(
+                      backgroundImage: image,
                       radius: 75,
                     ),
                     const SizedBox(
                       width: 20,
                     ),
                     Text(
-                      title,
+                      title!,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           color: Colors.white,

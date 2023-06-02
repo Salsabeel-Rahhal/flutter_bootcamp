@@ -19,8 +19,9 @@ class _SuccessResetState extends State<SuccessReset> {
               const Size.fromHeight(200.0), // here the desired height
           child: MyAppBar(
             title: "Success Reset",
-            body: "",
-            description: "",
+            image: AssetImage(
+              "assets/images/onboardingone.png",
+            ),
           )),
       body: Container(
         padding: const EdgeInsets.all(15),

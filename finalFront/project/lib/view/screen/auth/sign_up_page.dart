@@ -19,8 +19,6 @@ class _SignUpPageState extends State<SignUpPage> {
   final _controllerEmail = TextEditingController();
   final _controllerPhoneNumber = TextEditingController();
   final _controllerPassword = TextEditingController();
-  final String body = "";
-  final String desc = "";
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +27,9 @@ class _SignUpPageState extends State<SignUpPage> {
         preferredSize: const Size.fromHeight(200.0),
         child: MyAppBar(
           title: "Sign Up",
-          body: body,
-          description: desc,
+          image: AssetImage(
+            "assets/images/onboardingone.png",
+          ),
         ),
       ),
       body: Container(

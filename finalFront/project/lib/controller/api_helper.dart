@@ -39,8 +39,8 @@ class ApiHelper {
   Future<dynamic> putRequest(String path, Map body) async {
     Uri uriFunction = Uri.http(DOMAIN, path);
     var token = await getToken();
-    timeout:
-    const Duration(seconds: 10);
+    // timeout:
+    // const Duration(seconds: 10);
     var headers = {"Authorization": token};
     http.Response resposne =
         await http.put(uriFunction, body: body, headers: headers);

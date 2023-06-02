@@ -60,8 +60,9 @@ class _VerficationPageState extends State<VerficationPage> {
               const Size.fromHeight(200.0), // here the desired height
           child: MyAppBar(
             title: "Verfication Code",
-            body: "",
-            description: "",
+            image: AssetImage(
+              "assets/images/onboardingone.png",
+            ),
           )),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),

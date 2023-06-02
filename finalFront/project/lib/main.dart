@@ -12,6 +12,7 @@ import 'package:project/view/screen/home_page.dart';
 import 'package:project/view/screen/home_page1.dart';
 import 'package:project/view/screen/map_page.dart';
 import 'package:project/view/screen/on_boarding_page.dart';
+import 'package:project/view/screen/profile_page.dart';
 import 'package:project/view/screen/setting_page.dart';
 import 'package:project/view/widget/current_location.dart';
 import 'package:lottie/lottie.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             fontFamily: "Playfair_Display", primarySwatch: Colors.deepPurple),
         // supportedLocales: L10n.all,
-        home: MapPage());
+        home: MyHomePage());
   }
 }
 

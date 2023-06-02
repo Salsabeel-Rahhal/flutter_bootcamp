@@ -99,8 +99,12 @@ flutter:
     - assets/images/onboardingone.png
     - assets/images/onboardingthree.png
     - assets/images/profile2.jpg
+    - assets/images/profile.jpg
     - assets/animations/f3.json
     - assets/animations/f4.json
+    - assets/animations/f5.json
+    - assets/animations/f6.json
+    - assets/animations/f7.json
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware

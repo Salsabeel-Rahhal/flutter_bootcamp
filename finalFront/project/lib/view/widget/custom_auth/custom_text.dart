@@ -11,7 +11,7 @@ class CustomText extends StatelessWidget {
     this.onTap1,
   });
   String? textOne;
-  final String textTwo;
+  final String? textTwo;
 
   void Function()? onTap;
   Widget? onTap1;
@@ -27,7 +27,7 @@ class CustomText extends StatelessWidget {
               color: Colors.black, fontWeight: FontWeight.normal),
         ),
         InkWell(
-          child: GradientText(textTwo, colors: const [
+          child: GradientText(textTwo!, colors: const [
             Color.fromARGB(255, 74, 20, 140),
             Color.fromARGB(255, 6, 122, 51)
           ]),

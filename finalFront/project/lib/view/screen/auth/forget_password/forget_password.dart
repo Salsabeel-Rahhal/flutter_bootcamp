@@ -15,8 +15,7 @@ class ForgetPassword extends StatefulWidget {
 class _ForgetPasswordState extends State<ForgetPassword> {
   final controller = ForgetControllerImp();
   bool isObsecure = true;
-  String body = "Reset Password";
-  String desc = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,8 +24,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 const Size.fromHeight(200.0), // here the desired height
             child: MyAppBar(
               title: "Forget Password",
-              body: body,
-              description: desc,
+              image: AssetImage(
+                "assets/images/onboardingone.png",
+              ),
             )),
         body: Container(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 40),
