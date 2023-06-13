@@ -1,42 +1,41 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:project/view/screen/auth/forget_password/reset_password.dart';
+import 'package:project/view/screen/auth/sign_in_page.dart';
+import 'package:project/view/screen/language.dart';
+import 'package:project/view/widget/auth/custom_text.dart';
 
-import '../widget/custom_bars/my_app_bar.dart';
+import '../widget/alert_exit_app.dart';
+import '../widget/bars/my_app_bar.dart';
 
 class SettingPage extends StatefulWidget {
-  const SettingPage({super.key});
+  const SettingPage({
+    super.key,
+  });
 
   @override
   State<SettingPage> createState() => _SettingPageState();
 }
 
 class _SettingPageState extends State<SettingPage> {
+  late final List<Widget>? children;
+  bool isActive = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.arrow_back),
-          color: Colors.white,
-        ),
-      ),
-      body: Container(
-        padding: const EdgeInsets.only(left: 16, right: 16),
-        height: double.infinity,
-        width: double.infinity,
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: [
-          Color.fromARGB(255, 74, 20, 140),
-          Color.fromARGB(255, 182, 153, 217)
-        ])),
+      body: WillPopScope(
+        onWillPop: alertExitApp,
         child: Container(
+          padding: const EdgeInsets.only(left: 16, right: 16),
+          height: double.infinity,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(colors: [
+            Color.fromARGB(255, 74, 20, 140),
+            Color.fromARGB(255, 182, 153, 217)
+          ])),
           child: ListView(
             children: [
               Row(
@@ -84,11 +83,43 @@ class _SettingPageState extends State<SettingPage> {
               const SizedBox(
                 height: 10,
               ),
-              buildAccountOptionRoe(context, "Change Password"),
-              buildAccountOptionRoe(context, "Content Settings"),
-              buildAccountOptionRoe(context, "Social"),
-              buildAccountOptionRoe(context, "Language"),
-              buildAccountOptionRoe(context, "Privacy and security"),
+              buildAccountOptionRow(context, "Change Password", [
+                CustomText(
+                  textTwo: "Go to reset password",
+                  onTap1: const ResetPage(),
+                )
+              ]),
+              buildAccountOptionRow(context, "Social & Share App", [
+                TextButton.icon(
+                    onPressed: () {},
+                    icon: const Icon(Icons.facebook),
+                    label: const Text("Facebbook")),
+                TextButton.icon(
+                    onPressed: () {},
+                    icon: const Icon(Icons.telegram),
+                    label: const Text("Telegram")),
+                TextButton.icon(
+                    onPressed: () {},
+                    icon: const Icon(Icons.tiktok),
+                    label: const Text("TikTok")),
+              ]),
+              buildAccountOptionRow(context, "Language", [
+                CustomText(
+                  textTwo: "Go to change language",
+                  onTap1: const LanguagePage(),
+                )
+              ]),
+              buildAccountOptionRow(context, "Help", [
+                CustomText(
+                  textTwo: "Help Center",
+                ),
+                CustomText(
+                  textTwo: "Contact Support",
+                ),
+                CustomText(
+                  textTwo: "Permissions",
+                )
+              ]),
               const SizedBox(
                 height: 40,
               ),
@@ -120,36 +151,44 @@ class _SettingPageState extends State<SettingPage> {
               const SizedBox(
                 height: 10,
               ),
-              buildNotificationOptionRow("New for you", true),
-              buildNotificationOptionRow("Account activity", true),
+              buildNotificationOptionRow("New for you"),
+              buildNotificationOptionRow("Account activity"),
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                padding: const EdgeInsets.all(7),
-                width: 150,
-                height: 35,
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          spreadRadius: 1.5,
-                          blurRadius: 12,
-                          color: Colors.black.withOpacity(0.5),
-                          offset: const Offset(2, 12)),
-                    ],
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15)),
-                child: InkWell(
-                    onTap: () {},
-                    child: const Text(
-                      "Sign Out",
-                      style: TextStyle(
-                          fontSize: 14,
-                          letterSpacing: 2.2,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    )),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 25),
+                    padding: const EdgeInsets.all(7),
+                    width: 120,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              spreadRadius: 1.5,
+                              blurRadius: 12,
+                              color: Colors.black.withOpacity(0.5),
+                              offset: const Offset(2, 12)),
+                        ],
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15)),
+                    child: InkWell(
+                        onTap: () {
+                          alertExitApp();
+                        },
+                        child: const Text(
+                          "Sign Out",
+                          style: TextStyle(
+                              fontSize: 14,
+                              letterSpacing: 2.2,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        )),
+                  ),
+                ],
               ),
             ],
           ),
@@ -158,7 +197,7 @@ class _SettingPageState extends State<SettingPage> {
     );
   }
 
-  Row buildNotificationOptionRow(String title, bool isActive) {
+  Row buildNotificationOptionRow(String title) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -167,28 +206,28 @@ class _SettingPageState extends State<SettingPage> {
           style: const TextStyle(
               fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white70),
         ),
-        Transform.scale(
-            scale: 0.6,
-            child: CupertinoSwitch(value: isActive, onChanged: (bool val) {}))
+        SwitchExample(),
       ],
     );
   }
 
-  GestureDetector buildAccountOptionRoe(BuildContext context, String title) {
+  GestureDetector buildAccountOptionRow(
+      BuildContext context, String title, List<Widget> children) {
     return GestureDetector(
       onTap: () {
         showDialog(
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: const Text("Change Password"),
+                title: Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.w600),
+                ),
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: const [
-                    Text("1"),
-                    Text("2"),
-                    Text("3"),
-                  ],
+                  children: children,
                 ),
                 actions: [
                   TextButton(
@@ -197,7 +236,9 @@ class _SettingPageState extends State<SettingPage> {
                       },
                       child: const Text(
                         "Close",
-                        style: TextStyle(color: Colors.deepPurple),
+                        style: TextStyle(
+                            color: Colors.deepPurple,
+                            fontWeight: FontWeight.w600),
                       ))
                 ],
               );
@@ -223,6 +264,54 @@ class _SettingPageState extends State<SettingPage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class SwitchExample extends StatefulWidget {
+  const SwitchExample({super.key});
+
+  @override
+  State<SwitchExample> createState() => _SwitchExampleState();
+}
+
+class _SwitchExampleState extends State<SwitchExample> {
+  bool light = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final MaterialStateProperty<Color?> trackColor =
+        MaterialStateProperty.resolveWith<Color?>(
+      (Set<MaterialState> states) {
+        if (states.contains(MaterialState.selected)) {
+          return Colors.green;
+        }
+        return null;
+      },
+    );
+    final MaterialStateProperty<Color?> overlayColor =
+        MaterialStateProperty.resolveWith<Color?>(
+      (Set<MaterialState> states) {
+        if (states.contains(MaterialState.selected)) {
+          return Colors.green.withOpacity(0.54);
+        }
+        if (states.contains(MaterialState.disabled)) {
+          return Colors.grey.shade400;
+        }
+        return null;
+      },
+    );
+
+    return Switch(
+      value: light,
+      overlayColor: overlayColor,
+      trackColor: trackColor,
+      thumbColor: const MaterialStatePropertyAll<Color>(Colors.black),
+      onChanged: (bool value) {
+        setState(() {
+          light = value;
+        });
+      },
     );
   }
 }

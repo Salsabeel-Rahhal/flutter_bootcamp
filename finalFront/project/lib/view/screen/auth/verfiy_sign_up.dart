@@ -4,10 +4,10 @@ import 'package:gradient_borders/input_borders/gradient_outline_input_border.dar
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../../controller/auth/verfiy_code_sign_up.dart';
-import '../../widget/custom_auth/custom_button_auth.dart';
+import '../../widget/auth/custom_button_auth.dart';
 // ignore: unused_import
-import '../../widget/custom_auth/custom_text.dart';
-import '../../widget/custom_bars/my_app_bar.dart';
+import '../../widget/auth/custom_text.dart';
+import '../../widget/bars/my_app_bar.dart';
 
 class VerfiyCodeSignUp extends StatefulWidget {
   const VerfiyCodeSignUp({super.key});
@@ -29,15 +29,6 @@ class _VerfiyCodeSignUpState extends State<VerfiyCodeSignUp> {
     );
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(200.0),
-        child: MyAppBar(
-          title: "Verification Code",
-          image: AssetImage(
-            "assets/images/onboardingone.png",
-          ),
-        ),
-      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         child: Column(

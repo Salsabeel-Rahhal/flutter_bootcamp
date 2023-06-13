@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:project/view/screen/auth/sign_in_page.dart';
-
-import '../../../widget/custom_bars/my_app_bar.dart';
 
 class SuccessReset extends StatefulWidget {
   const SuccessReset({super.key});
@@ -14,47 +14,38 @@ class _SuccessResetState extends State<SuccessReset> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize:
-              const Size.fromHeight(200.0), // here the desired height
-          child: MyAppBar(
-            title: "Success Reset",
-            image: AssetImage(
-              "assets/images/onboardingone.png",
-            ),
-          )),
       body: Container(
         padding: const EdgeInsets.all(15),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(
-              child: Icon(
-                Icons.check_circle_outline,
-                size: 200,
-                color: Colors.purple.shade900,
-              ),
-            ),
             const SizedBox(
               height: 30,
             ),
-            const InkWell(
+            Center(
+              child: LottieBuilder.asset('assets/animations/f9.json'),
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            InkWell(
               child: Center(
                   child: Text(
-                "Your password has been updated Successfuly",
-                style: TextStyle(
+                "40".tr,
+                style: const TextStyle(
                   color: Colors.black,
-                  fontSize: 15,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
               )),
             ),
             const SizedBox(
-              height: 50,
+              height: 30,
             ),
             Container(
               margin: const EdgeInsets.only(top: 30),
-              height: 50,
+              height: 60,
               width: 200,
               decoration: BoxDecoration(
                   gradient: const LinearGradient(
@@ -72,11 +63,11 @@ class _SuccessResetState extends State<SuccessReset> {
                       MaterialPageRoute(
                           builder: (context) => const SignInPage()));
                 },
-                child: const Text(
-                  "Go to sign in page",
-                  style: TextStyle(
+                child: Text(
+                  "41".tr,
+                  style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 15,
                   ),
                 ),
               ),

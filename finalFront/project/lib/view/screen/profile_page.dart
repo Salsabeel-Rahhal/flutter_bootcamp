@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/input_borders/gradient_outline_input_border.dart';
+import 'package:lottie/lottie.dart';
 import 'package:project/view/screen/setting_page.dart';
-import 'package:project/view/widget/custom_auth/custom_text.dart';
-import 'package:project/view/widget/custom_auth/custom_text_form_auth.dart';
+import 'package:project/view/widget/auth/custom_text.dart';
+import 'package:project/view/widget/auth/custom_text_form_auth.dart';
 
-import '../widget/custom_bars/my_app_bar.dart';
+import '../widget/bars/my_app_bar.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -62,20 +63,18 @@ class _ProfilePageState extends State<ProfilePage> {
                       width: 130,
                       height: 130,
                       decoration: BoxDecoration(
-                        border: Border.all(width: 4, color: Colors.white),
-                        boxShadow: [
-                          BoxShadow(
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              color: Colors.black.withOpacity(0.5),
-                              offset: const Offset(2, 12)),
-                        ],
-                        shape: BoxShape.circle,
-                        image: const DecorationImage(
-                          image: AssetImage("assets/images/profile2.jpg"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                          border: Border.all(width: 4, color: Colors.white),
+                          boxShadow: [
+                            BoxShadow(
+                                spreadRadius: 2,
+                                blurRadius: 10,
+                                color: Colors.black.withOpacity(0.5),
+                                offset: const Offset(2, 12)),
+                          ],
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/profile.jpg'),
+                              fit: BoxFit.cover)),
                     ),
                     Positioned(
                         bottom: 0,

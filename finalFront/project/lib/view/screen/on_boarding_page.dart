@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project/data/datasource/static/static.dart';
+import 'package:get/get.dart';
+import 'package:project/data/static/static.dart';
 import 'package:project/view/screen/auth/sign_in_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -63,7 +64,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 60,
                     width: 300,
                     child: Text(onBoardingList[i].body!,
                         style: const TextStyle(
@@ -116,8 +117,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             ),
                             child: Text(
                                 currentIndex == onBoardingList.length - 1
-                                    ? "Let's Go"
-                                    : "Skip"),
+                                    ? "11".tr
+                                    : "8".tr),
                           )),
                       Container(
                           margin: const EdgeInsets.only(bottom: 30),
@@ -152,8 +153,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             ),
                             child: Text(
                                 currentIndex == onBoardingList.length - 1
-                                    ? "Continue"
-                                    : "Next"),
+                                    ? "10".tr
+                                    : "9".tr),
                           )),
                     ],
                   ),

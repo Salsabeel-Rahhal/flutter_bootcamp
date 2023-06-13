@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:project/view/screen/auth/sign_in_page.dart';
 
-import '../../widget/custom_bars/my_app_bar.dart';
+import '../../widget/bars/my_app_bar.dart';
 
 class SuccessSignUp extends StatefulWidget {
   const SuccessSignUp({super.key});
@@ -21,35 +23,23 @@ class _SuccessSignUpState extends State<SuccessSignUp> {
     );
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(200.0),
-        child: MyAppBar(
-          title: "Success Sign Up",
-          image: AssetImage(
-            "assets/images/onboardingone.png",
-          ),
-        ),
-      ),
       body: Container(
         padding: const EdgeInsets.all(15),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
-              child: Icon(
-                Icons.check_circle_outline,
-                size: 200,
-                color: Colors.purple.shade900,
-              ),
+              child: LottieBuilder.asset('assets/animations/f9.json'),
             ),
             const SizedBox(
               height: 30,
             ),
-            const Center(
+            Center(
               child: Text(
-                "Congratulations",
-                style: TextStyle(
+                "46".tr,
+                style: const TextStyle(
                   color: Colors.black,
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
@@ -58,23 +48,9 @@ class _SuccessSignUpState extends State<SuccessSignUp> {
             const SizedBox(
               height: 30,
             ),
-            const Center(
-              child: Text(
-                "Successfully Registered",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontWeight: FontWeight.normal,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const SizedBox(
-              height: 50,
-            ),
             Container(
               margin: const EdgeInsets.only(top: 30),
-              height: 50,
+              height: 60,
               width: 200,
               decoration: BoxDecoration(
                 gradient: gradient,
@@ -87,13 +63,13 @@ class _SuccessSignUpState extends State<SuccessSignUp> {
                       MaterialPageRoute(
                           builder: (context) => const SignInPage()));
                 },
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "Go to sign in page",
-                    style: TextStyle(
+                    "41".tr,
+                    style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 15,
                     ),
                   ),
                 ),

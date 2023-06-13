@@ -19,6 +19,12 @@ class ApiHelper {
     return "";
   }
 
+  Future<dynamic> getRequest1(String path) async {
+    Uri uriFunction = Uri.https(DOMAIN, path);
+    http.Response resposne = await http.get(uriFunction);
+    return resposneFunction(resposne);
+  }
+
   Future<dynamic> getRequest(String path) async {
     Uri uriFunction = Uri.http(DOMAIN, path);
     var token = await getToken();

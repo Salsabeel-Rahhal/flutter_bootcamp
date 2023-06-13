@@ -1,46 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:project/core/localization/change_locals.dart';
+import 'package:project/services/my_services.dart';
 import 'package:project/view/screen/auth/forget_password/forget_password.dart';
+import 'package:project/view/screen/auth/forget_password/success_reset.dart';
 import 'package:project/view/screen/auth/forget_password/verfication_page.dart';
 import 'package:project/view/screen/auth/sign_in_page.dart';
 import 'package:project/view/screen/auth/sign_up_page.dart';
 import 'package:project/view/screen/auth/success_sign_up.dart';
-import 'package:project/view/Map%5BSetting/google_map.dart';
+import 'package:project/view/screen/favorite_page.dart';
 import 'package:project/view/screen/home_page.dart';
 import 'package:project/view/screen/home_page1.dart';
+import 'package:project/view/screen/language.dart';
 import 'package:project/view/screen/map_page.dart';
 import 'package:project/view/screen/on_boarding_page.dart';
 import 'package:project/view/screen/profile_page.dart';
+import 'package:project/view/screen/resrvations_page.dart';
 import 'package:project/view/screen/setting_page.dart';
+import 'package:project/view/screen/shops.dart';
 import 'package:project/view/widget/current_location.dart';
 import 'package:lottie/lottie.dart';
 
-void main() {
-  runApp(
-    ProviderScope(
-      child: MyApp(),
-    ),
-  );
+import 'core/localization/translation.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initialServices();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    LocalController controller = Get.put(LocalController());
+    return GetMaterialApp(
+        translations: MyTranslation(),
         debugShowCheckedModeBanner: false,
+        locale: controller.language,
         builder: EasyLoading.init(),
-        theme: ThemeData(
-            fontFamily: "Playfair_Display", primarySwatch: Colors.deepPurple),
-        // supportedLocales: L10n.all,
-        home: MyHomePage());
+        theme: controller.appTheme,
+        home: ReservationPage());
   }
 }
 
 class SplachPage extends StatefulWidget {
-  const SplachPage({super.key});
+  const SplachPage({
+    super.key,
+  });
 
   @override
   State<SplachPage> createState() => _SplachPageState();
@@ -52,7 +63,7 @@ class _SplachPageState extends State<SplachPage> {
     super.initState();
     Future.delayed(const Duration(seconds: 6)).then((value) =>
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => HomePage())));
+            MaterialPageRoute(builder: (context) => ShopPage())));
   }
 
   @override

@@ -10,17 +10,20 @@ class CustomTextFormAuth extends StatelessWidget {
     this.iconData,
     this.controller,
     this.validator,
+    this.isobscureText,
   });
   String? Function(String?)? validator;
   final String hintText;
   final String labelText;
   final IconData? iconData;
   final TextEditingController? controller;
+  bool? isobscureText;
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 20),
       child: TextFormField(
+        obscureText: isobscureText ?? true,
         controller: controller,
         validator: validator,
         decoration: InputDecoration(

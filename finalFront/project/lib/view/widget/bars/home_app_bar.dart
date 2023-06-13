@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/input_borders/gradient_outline_input_border.dart';
+import 'package:project/view/screen/profile_page.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key, required this.textController});
@@ -12,7 +13,8 @@ class HomeAppBar extends StatelessWidget {
         appBar: AppBar(
           leading: IconButton(
               onPressed: () {
-                // Navigator.push(context, MaterialPageRoute(builder: (context)=>Map();))
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProfilePage()));
               },
               icon: const Icon(
                 Icons.account_circle_rounded,

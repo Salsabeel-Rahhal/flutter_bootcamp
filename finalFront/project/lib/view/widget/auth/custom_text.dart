@@ -21,7 +21,7 @@ class CustomText extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          textOne!,
+          textOne ?? "",
           textAlign: TextAlign.end,
           style: const TextStyle(
               color: Colors.black, fontWeight: FontWeight.normal),

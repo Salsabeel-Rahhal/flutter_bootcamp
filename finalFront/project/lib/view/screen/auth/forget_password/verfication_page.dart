@@ -1,13 +1,12 @@
+import 'package:get/get.dart';
 import 'package:gradient_borders/input_borders/gradient_outline_input_border.dart';
 import 'package:project/view/screen/auth/forget_password/reset_password.dart';
-import 'package:project/view/widget/custom_auth/custom_button_auth.dart';
+import 'package:project/view/widget/auth/custom_button_auth.dart';
 import 'package:project/controller/auth/verfication_controller.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import 'package:project/view/widget/custom_auth/custom_text.dart';
+import 'package:project/view/widget/auth/custom_text.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
-import '../../../widget/custom_bars/my_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'dart:async';
 
 class VerficationPage extends StatefulWidget {
@@ -31,7 +30,7 @@ class _VerficationPageState extends State<VerficationPage> {
   }
 
   void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         if (_remainingTime > 0) {
           _remainingTime--;
@@ -55,18 +54,9 @@ class _VerficationPageState extends State<VerficationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize:
-              const Size.fromHeight(200.0), // here the desired height
-          child: MyAppBar(
-            title: "Verfication Code",
-            image: AssetImage(
-              "assets/images/onboardingone.png",
-            ),
-          )),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        child: Column(children: [
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           const SizedBox(
             height: 40,
           ),
@@ -74,13 +64,13 @@ class _VerficationPageState extends State<VerficationPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
             children: [
-              GradientText("Verfication Code", colors: const [
+              GradientText("33".tr, colors: const [
                 Color.fromARGB(255, 74, 20, 140),
                 Color.fromARGB(255, 6, 122, 51)
               ]),
               CustomText(
                 textOne: "",
-                textTwo: "Re-send Code",
+                textTwo: "34".tr,
                 onTap: (_remainingTime == 0) ? _resendCode : null,
               )
             ],
@@ -148,10 +138,13 @@ class _VerficationPageState extends State<VerficationPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  " You can re-send the code after $_remainingTime",
-                  style: TextStyle(color: Colors.grey),
+                  "35".tr,
+                  style: const TextStyle(color: Colors.grey),
                 ),
-                Text("$_timer ", style: TextStyle(color: Colors.grey)),
+                Text(
+                  "$_remainingTime",
+                  style: const TextStyle(color: Colors.grey),
+                )
               ],
             ),
             const SizedBox(
@@ -159,7 +152,7 @@ class _VerficationPageState extends State<VerficationPage> {
             ),
             CustomButtonAuth(
                 width: 200,
-                text: "Continue",
+                text: "10".tr,
                 onPressed: () {
                   Navigator.push(
                       context,

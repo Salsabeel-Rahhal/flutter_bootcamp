@@ -12,7 +12,9 @@ class ForgetControllerImp extends ForgetController {
   late TextEditingController phone;
 
   @override
-  check() {}
+  check() {
+    Get.toNamed(AppRoute.verfication);
+  }
 
   @override
   goToVerfication() {

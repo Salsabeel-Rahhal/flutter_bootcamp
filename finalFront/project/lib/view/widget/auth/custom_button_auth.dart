@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 class CustomButtonAuth extends StatelessWidget {
   final String text;
   final double width;
-  final onPressed;
+  final void Function()? onPressed;
   CustomButtonAuth(
       {super.key, required this.text, this.onPressed, required this.width});
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 30),
-      height: 50,
+      height: 60,
       width: width,
       decoration: BoxDecoration(
           gradient: const LinearGradient(

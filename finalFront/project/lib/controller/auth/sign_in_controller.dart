@@ -4,31 +4,13 @@ import 'package:get/get.dart';
 import 'package:project/core/constant/routes.dart';
 
 abstract class SignInController extends GetxController {
-  login();
   goToSignUp();
   goToForgetPassword();
 }
 
 class SignInControllerImp extends SignInController {
-  // Controller for Login
   late TextEditingController email;
   late TextEditingController password;
-  // GlobalKey<FormState> keyForm = GlobalKey<FormState>();
-  // // Controller for Sign Up
-  // late TextEditingController signUpEmail;
-  // late TextEditingController signUppassword;
-  // late TextEditingController userName;
-  // late TextEditingController phone;
-
-  @override
-  login() {
-    // var formData = keyForm.currentState;
-    // if (formData!.validate()) {
-    //   print(" valid");
-    // } else {
-    //   print("not valid");
-    // }
-  }
 
   @override
   goToSignUp() {
@@ -52,6 +34,5 @@ class SignInControllerImp extends SignInController {
   @override
   goToForgetPassword() {
     Get.toNamed(AppRoute.forgetPassword);
-    // Navigator.push(context, MaterialPageRoute(builder: (context)=> ForgetPassword()));
   }
 }
