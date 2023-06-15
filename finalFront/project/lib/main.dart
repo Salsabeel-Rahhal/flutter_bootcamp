@@ -1,30 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:project/core/localization/change_locals.dart';
 import 'package:project/services/my_services.dart';
-import 'package:project/view/screen/auth/forget_password/forget_password.dart';
-import 'package:project/view/screen/auth/forget_password/success_reset.dart';
-import 'package:project/view/screen/auth/forget_password/verfication_page.dart';
-import 'package:project/view/screen/auth/sign_in_page.dart';
-import 'package:project/view/screen/auth/sign_up_page.dart';
-import 'package:project/view/screen/auth/success_sign_up.dart';
-import 'package:project/view/screen/favorite_page.dart';
-import 'package:project/view/screen/home_page.dart';
-import 'package:project/view/screen/home_page1.dart';
-import 'package:project/view/screen/language.dart';
-import 'package:project/view/screen/map_page.dart';
-import 'package:project/view/screen/on_boarding_page.dart';
-import 'package:project/view/screen/profile_page.dart';
-import 'package:project/view/screen/resrvations_page.dart';
-import 'package:project/view/screen/setting_page.dart';
-import 'package:project/view/screen/shops.dart';
-import 'package:project/view/widget/current_location.dart';
 import 'package:lottie/lottie.dart';
-
+import 'package:project/view/screen/auth/sign_in_page.dart';
+import 'package:project/view/screen/map_page.dart';
+import 'package:project/view/screen/shops.dart';
+import 'package:project/view/screen/resrvations_page.dart';
+import 'package:project/view/screen/test.dart';
 import 'core/localization/translation.dart';
 
 void main() async {
@@ -44,7 +28,7 @@ class MyApp extends StatelessWidget {
         locale: controller.language,
         builder: EasyLoading.init(),
         theme: controller.appTheme,
-        home: ReservationPage());
+        home: profile());
   }
 }
 

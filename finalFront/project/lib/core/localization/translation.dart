@@ -55,7 +55,9 @@ class MyTranslation extends Translations {
           "46": "تم إنشاء حسابك بنجاح",
           "47": "الرجاء إدخال اسم المستخدم  ",
           "48": "اسم المستخدم يجب أن لا يقل عن 4 رموز ولا يزيد عن 20",
-          "49": "كلمة المرور يجب أن تحتوي على حروف وأرقام"
+          "49": "كلمة المرور يجب أن تحتوي على حروف وأرقام",
+          "50": "تنبيه",
+          "51": "هل تريد الخروج من التطبيق ؟"
         },
         "en": {
           "1": "Choose the app language",
@@ -110,7 +112,9 @@ class MyTranslation extends Translations {
           "46": "Successfully Registered",
           "47": "please enter your user name",
           "48": "Username must be between 4 and 20 characters",
-          "49": "Passwordmust contain only letters and numbers "
+          "49": "Passwordmust contain only letters and numbers ",
+          "50": "ِAlert",
+          "51": "Do you want to logOut?"
         }
       };
 }

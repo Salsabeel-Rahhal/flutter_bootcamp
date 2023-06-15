@@ -20,7 +20,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  bool _isObscure = true;
+  bool _isObscure = false;
   final _keyForm = GlobalKey<FormState>();
   final _controllerUserName = TextEditingController();
   final _controllerEmail = TextEditingController();
@@ -92,6 +92,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Column(
                       children: [
                         CustomTextFormAuth(
+                          isobscureText: false,
                           hintText: "26".tr,
                           labelText: "25".tr,
                           iconData: Icons.person_2_outlined,
@@ -106,6 +107,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           },
                         ),
                         CustomTextFormAuth(
+                          isobscureText: false,
                           hintText: "16".tr,
                           labelText: "15".tr,
                           iconData: Icons.email_outlined,
@@ -125,7 +127,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             validator: (text) {
                               if (text!.isEmpty) {
                                 return '20'.tr;
-                              } else if (text.length < 4 || text.length > 8) {
+                              } else if (text.length < 4 || text.length > 10) {
                                 return '20'.tr;
                               }
                               return null;
@@ -174,6 +176,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         Container(
                           margin: const EdgeInsets.only(top: 20),
                           child: TextFormField(
+                            obscureText: false,
                             keyboardType: TextInputType.phone,
                             controller: _controllerPhoneNumber,
                             decoration: InputDecoration(

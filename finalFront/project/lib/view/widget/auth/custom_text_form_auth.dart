@@ -3,15 +3,14 @@ import 'package:gradient_borders/input_borders/gradient_outline_input_border.dar
 
 // ignore: must_be_immutable
 class CustomTextFormAuth extends StatelessWidget {
-  CustomTextFormAuth({
-    super.key,
-    required this.hintText,
-    required this.labelText,
-    this.iconData,
-    this.controller,
-    this.validator,
-    this.isobscureText,
-  });
+  CustomTextFormAuth(
+      {super.key,
+      required this.hintText,
+      required this.labelText,
+      this.iconData,
+      this.controller,
+      this.validator,
+      this.isobscureText});
   String? Function(String?)? validator;
   final String hintText;
   final String labelText;

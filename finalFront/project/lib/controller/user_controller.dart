@@ -1,21 +1,8 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import '../data/model/sign_in_model.dart';
 import '../data/model/user_model.dart';
 import 'api_helper.dart';
 
 class UserController {
-  // Future<SignInModel> signIn(String email, String password) async {
-  //   try {
-  //     var result = await ApiHelper().postRequest("users/signIn", {
-  //       "email": email,
-  //       "password": password,
-  //     });
-  //     return SignInModel.fromJson(result);
-  //   } catch (e) {
-  //     rethrow;
-  //   }
-  // }
-
   Future<Object> signIn(String email, String password) async {
     User user = User(
       email: email,
@@ -43,7 +30,7 @@ class UserController {
       String token = jsonObject["token"];
       var storage = const FlutterSecureStorage();
       await storage.write(key: "token", value: "$type $token");
-
+      print(user);
       return true;
     } catch (ex) {
       rethrow;
@@ -75,58 +62,19 @@ class UserController {
     }
   }
 
-  // Future<String> uploadImage(File file) async {
-  //   try {
-  //     var result = await ApiHelper().uploadImage(file, "/api/storage");
-  //     print(result);
-  //     return result["path"];
-  //   } catch (ex) {
-  //     print(ex);
-  //     rethrow;
-  //   }
-  // }
+  Future<bool> getemail(User user) async {
+    try {
+      dynamic jsonObject =
+          await ApiHelper().postRequest("api/users/email", user.tojsonemail());
+      String type = jsonObject["email"];
+
+      var storage = const FlutterSecureStorage();
+      await storage.write(key: "token", value: "$type ");
+
+      return true;
+    } catch (ex) {
+      print(ex);
+      rethrow;
+    }
+  }
 }
-
-// import 'package:project/data/model/sign_in_model.dart';
-
-// import '../data/model/user_model.dart';
-// import 'api_helper.dart';
-
-// class UserController {
-//   Future<SignInModel> login(String email, String password) async {
-//     try {
-//       var result = await ApiHelper().postRequest("/api/users/login", {
-//         "email": email,
-//         "password": password,
-//       });
-//       return SignInModel.fromJson(result);
-//     } catch (e) {
-//       rethrow;
-//     }
-//   }
-
-//   Future<User> update(
-//       {required String email,
-//       required String password,
-//       required String username}) async {
-//     try {
-//       var result = await ApiHelper().putRequest("/api/users", {
-//         "email": email,
-//         "password": password,
-//         "username": username,
-//       });
-//       return User.fromJson(result);
-//     } catch (e) {
-//       rethrow;
-//     }
-//   }
-
-//   Future<User> getUser() async {
-//     try {
-//       var result = await ApiHelper().getRequest("/api/users");
-//       return User.fromJson(result);
-//     } catch (e) {
-//       rethrow;
-//     }
-//   }
-// }

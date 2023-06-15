@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:project/view/screen/setting_page.dart';
 
 // ignore: must_be_immutable
 class MyAppBar extends StatelessWidget {
-  MyAppBar(
+  const MyAppBar(
       {super.key,
       this.body,
       this.description,

@@ -15,9 +15,4 @@ class VerfiyCodeSignUpImp extends VerfiyCodeSignUp {
   goToSuccessSignUp() {
     Get.offNamed(AppRoute.successSignUp);
   }
-
-  @override
-  void onInit() {
-    super.onInit();
-  }
 }

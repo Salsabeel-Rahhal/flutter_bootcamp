@@ -11,15 +11,6 @@ class HomeAppBar extends StatelessWidget {
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          leading: IconButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ProfilePage()));
-              },
-              icon: const Icon(
-                Icons.account_circle_rounded,
-                size: 25,
-              )),
           centerTitle: true,
           backgroundColor: Colors.transparent,
           elevation: 0.0,

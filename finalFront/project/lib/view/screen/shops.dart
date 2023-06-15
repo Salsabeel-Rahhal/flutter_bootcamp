@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project/data/static/static.dart';
 import 'package:project/providers/shop_provider.dart';
+import 'package:project/view/screen/profile_page.dart';
 import 'package:project/view/screen/resrvations_page.dart';
 import 'package:project/view/screen/setting_page.dart';
+import 'package:project/view/widget/alert_exit_app.dart';
 import 'package:provider/provider.dart';
 import '../../controller/shops_controller.dart';
 import '../../data/model/shops_model.dart';
 import '../widget/bars/home_app_bar.dart';
-import 'favorite_page.dart';
+import 'map_page.dart';
 
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
@@ -20,7 +22,7 @@ class ShopPage extends StatefulWidget {
 class _ShopPageState extends State<ShopPage> {
   final ShopsController shopController = Get.put(ShopsController());
   final controller = TextEditingController();
-  final bool active = false;
+  bool active = false;
 
   Widget myDetailsContainer1(Shop shop) {
     return Container(
@@ -127,15 +129,9 @@ class _ShopPageState extends State<ShopPage> {
                   size: 15.0,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
-              IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    active ? Icons.favorite : Icons.favorite_border_outlined,
-                    color: Colors.red,
-                  ))
             ],
           ),
         ],
@@ -155,7 +151,28 @@ class _ShopPageState extends State<ShopPage> {
             margin: const EdgeInsets.all(12),
             child: GestureDetector(
               onTap: () {
-                Get.to(const ReservationPage());
+                String shopName = shop.shopName!;
+                String shopLocation = shop.shopLocation!;
+                String foodType = shop.foodType!;
+                String servicType = shop.serviceType!;
+                String rating = shop.rating!;
+                String priceRange = shop.priceRange!;
+                String contactNumber = shop.contactNumber!;
+                int myIndex = index;
+                print(myIndex);
+
+                Get.to(ReservationPage(
+                  shopList1: [
+                    shopName,
+                    shopLocation,
+                    foodType,
+                    servicType,
+                    rating,
+                    priceRange,
+                    contactNumber,
+                    myIndex,
+                  ],
+                ));
               },
               child: FittedBox(
                 child: Material(
@@ -259,23 +276,23 @@ class _ShopPageState extends State<ShopPage> {
               color: Colors.white,
             ),
             IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const FavoritePage(),
-                  ),
-                );
-              },
-              icon: const Icon(Icons.favorite),
-              color: Colors.white,
-            ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ProfilePage()));
+                },
+                icon: const Icon(
+                  Icons.account_circle_rounded,
+                  size: 25,
+                  color: Colors.white,
+                )),
             IconButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ShopPage(),
+                    builder: (context) => const ShopPage(),
                   ),
                 );
               },
@@ -284,14 +301,9 @@ class _ShopPageState extends State<ShopPage> {
             ),
             IconButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ReservationPage(),
-                  ),
-                );
+                alertExitApp();
               },
-              icon: const Icon(Icons.calendar_month_outlined),
+              icon: const Icon(Icons.logout),
               color: Colors.white,
             ),
             IconButton(
@@ -299,7 +311,7 @@ class _ShopPageState extends State<ShopPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ShopPage(),
+                    builder: (context) => MapPage(),
                   ),
                 );
               },
@@ -318,7 +330,7 @@ class _ShopPageState extends State<ShopPage> {
         builder: (BuildContext context) {
           return StatefulBuilder(
             builder: (context, setState) {
-              return Container(
+              return SizedBox(
                 height: 230,
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),

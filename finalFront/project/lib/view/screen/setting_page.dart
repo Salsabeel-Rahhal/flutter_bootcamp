@@ -25,173 +25,170 @@ class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WillPopScope(
-        onWillPop: alertExitApp,
-        child: Container(
-          padding: const EdgeInsets.only(left: 16, right: 16),
-          height: double.infinity,
-          width: double.infinity,
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(colors: [
-            Color.fromARGB(255, 74, 20, 140),
-            Color.fromARGB(255, 182, 153, 217)
-          ])),
-          child: ListView(
-            children: [
-              Row(
-                children: [
-                  LottieBuilder.asset('assets/animations/f7.json'),
-                  const Text(
-                    "Settings",
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
+      body: Container(
+        padding: const EdgeInsets.only(left: 16, right: 16),
+        height: double.infinity,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(colors: [
+          Color.fromARGB(255, 74, 20, 140),
+          Color.fromARGB(255, 182, 153, 217)
+        ])),
+        child: ListView(
+          children: [
+            Row(
+              children: [
+                LottieBuilder.asset('assets/animations/f7.json'),
+                const Text(
+                  "Settings",
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: const [
+                Icon(
+                  Icons.person,
+                  color: Colors.white,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  " Account",
+                  style: TextStyle(
+                      fontSize: 18,
                       fontWeight: FontWeight.w600,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: const [
-                  Icon(
-                    Icons.person,
-                    color: Colors.white,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    " Account",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Divider(
-                height: 15,
-                thickness: 2,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              buildAccountOptionRow(context, "Change Password", [
-                CustomText(
-                  textTwo: "Go to reset password",
-                  onTap1: const ResetPage(),
+                      color: Colors.white),
                 )
-              ]),
-              buildAccountOptionRow(context, "Social & Share App", [
-                TextButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.facebook),
-                    label: const Text("Facebbook")),
-                TextButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.telegram),
-                    label: const Text("Telegram")),
-                TextButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.tiktok),
-                    label: const Text("TikTok")),
-              ]),
-              buildAccountOptionRow(context, "Language", [
-                CustomText(
-                  textTwo: "Go to change language",
-                  onTap1: const LanguagePage(),
-                )
-              ]),
-              buildAccountOptionRow(context, "Help", [
-                CustomText(
-                  textTwo: "Help Center",
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Divider(
+              height: 15,
+              thickness: 2,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            buildAccountOptionRow(context, "Change Password", [
+              CustomText(
+                textTwo: "Go to reset password",
+                onTap1: const ResetPage(),
+              )
+            ]),
+            buildAccountOptionRow(context, "Social & Share App", [
+              TextButton.icon(
+                  onPressed: () {},
+                  icon: const Icon(Icons.facebook),
+                  label: const Text("Facebbook")),
+              TextButton.icon(
+                  onPressed: () {},
+                  icon: const Icon(Icons.telegram),
+                  label: const Text("Telegram")),
+              TextButton.icon(
+                  onPressed: () {},
+                  icon: const Icon(Icons.tiktok),
+                  label: const Text("TikTok")),
+            ]),
+            buildAccountOptionRow(context, "Language", [
+              CustomText(
+                textTwo: "Go to change language",
+                onTap1: const LanguagePage(),
+              )
+            ]),
+            buildAccountOptionRow(context, "Help", [
+              CustomText(
+                textTwo: "Help Center",
+              ),
+              CustomText(
+                textTwo: "Contact Support",
+              ),
+              CustomText(
+                textTwo: "Permissions",
+              )
+            ]),
+            const SizedBox(
+              height: 40,
+            ),
+            Row(
+              children: const [
+                Icon(
+                  Icons.volume_up_outlined,
+                  color: Colors.white,
                 ),
-                CustomText(
-                  textTwo: "Contact Support",
+                SizedBox(
+                  width: 10,
                 ),
-                CustomText(
-                  textTwo: "Permissions",
+                Text(
+                  " Notifications",
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white),
                 )
-              ]),
-              const SizedBox(
-                height: 40,
-              ),
-              Row(
-                children: const [
-                  Icon(
-                    Icons.volume_up_outlined,
-                    color: Colors.white,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    " Notifications",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Divider(
-                height: 15,
-                thickness: 2,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              buildNotificationOptionRow("New for you"),
-              buildNotificationOptionRow("Account activity"),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 25),
-                    padding: const EdgeInsets.all(7),
-                    width: 120,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                              spreadRadius: 1.5,
-                              blurRadius: 12,
-                              color: Colors.black.withOpacity(0.5),
-                              offset: const Offset(2, 12)),
-                        ],
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15)),
-                    child: InkWell(
-                        onTap: () {
-                          alertExitApp();
-                        },
-                        child: const Text(
-                          "Sign Out",
-                          style: TextStyle(
-                              fontSize: 14,
-                              letterSpacing: 2.2,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center,
-                        )),
-                  ),
-                ],
-              ),
-            ],
-          ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Divider(
+              height: 15,
+              thickness: 2,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            buildNotificationOptionRow("New for you"),
+            buildNotificationOptionRow("Account activity"),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 25),
+                  padding: const EdgeInsets.all(7),
+                  width: 120,
+                  height: 40,
+                  decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            spreadRadius: 1.5,
+                            blurRadius: 12,
+                            color: Colors.black.withOpacity(0.5),
+                            offset: const Offset(2, 12)),
+                      ],
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: InkWell(
+                      onTap: () {
+                        alertExitApp();
+                      },
+                      child: const Text(
+                        "Sign Out",
+                        style: TextStyle(
+                            fontSize: 14,
+                            letterSpacing: 2.2,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      )),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

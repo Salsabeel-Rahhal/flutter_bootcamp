@@ -5,6 +5,8 @@ import 'package:project/view/screen/setting_page.dart';
 import 'package:project/view/widget/auth/custom_text.dart';
 import 'package:project/view/widget/auth/custom_text_form_auth.dart';
 
+import '../../controller/user_controller.dart';
+import '../../data/model/user_model.dart';
 import '../widget/bars/my_app_bar.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -15,6 +17,11 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final _controllerUsername = TextEditingController();
+  final _controllerEmail = TextEditingController();
+  final _controllerPassword = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
   bool showPassword = false;
   @override
   Widget build(BuildContext context) {
@@ -56,44 +63,6 @@ class _ProfilePageState extends State<ProfilePage> {
           },
           child: ListView(
             children: [
-              Center(
-                child: Stack(
-                  children: [
-                    Container(
-                      width: 130,
-                      height: 130,
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 4, color: Colors.white),
-                          boxShadow: [
-                            BoxShadow(
-                                spreadRadius: 2,
-                                blurRadius: 10,
-                                color: Colors.black.withOpacity(0.5),
-                                offset: const Offset(2, 12)),
-                          ],
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: AssetImage('assets/images/profile.jpg'),
-                              fit: BoxFit.cover)),
-                    ),
-                    Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                          height: 40,
-                          width: 40,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(width: 3, color: Colors.white),
-                              color: Colors.black),
-                          child: const Icon(
-                            Icons.edit,
-                            color: Colors.white,
-                          ),
-                        ))
-                  ],
-                ),
-              ),
               const SizedBox(
                 height: 20,
               ),
@@ -107,15 +76,21 @@ class _ProfilePageState extends State<ProfilePage> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
-                height: 30,
+                height: 50,
               ),
-              buildTextField("UserName", "salsabeel", false),
-              buildTextField("Email", "sa@gmail.com", false),
-              buildTextField("Password", "********", true),
-              buildTextField("Phone Number", "1234567890", false),
-              buildTextField("Country", "Jordan", false),
+              Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      buildTextField("UserName", "salsabeel", false),
+                      buildTextField("Email", "sa@gmail.com", false),
+                      buildTextField("Password", "********", true),
+                      buildTextField("Phone Number", "1234567890", false),
+                      buildTextField("Country", "Jordan", false),
+                    ],
+                  )),
               const SizedBox(
-                height: 30,
+                height: 50,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

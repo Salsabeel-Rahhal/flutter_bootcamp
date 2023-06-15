@@ -15,9 +15,4 @@ class VerifyCodeControllerImp extends VerifyCodeController {
   goToResetPassword() {
     Get.offNamed(AppRoute.rasetPassword);
   }
-
-  @override
-  void onInit() {
-    super.onInit();
-  }
 }

@@ -10,7 +10,7 @@ class ApiHelper {
   final String DOMAIN = "192.168.100.166:3333";
 
   Future<String> getToken() async {
-    var storage = FlutterSecureStorage();
+    var storage = const FlutterSecureStorage();
     bool check = await storage.containsKey(key: "token");
     if (check) {
       String result = await storage.read(key: "token") as String;
@@ -35,7 +35,7 @@ class ApiHelper {
 
   Future<dynamic> postRequest(String path, Map body) async {
     Uri uriFunction = Uri.http(DOMAIN, path);
-    timeout:
+
     const Duration(seconds: 10);
     print(TimeoutException);
     http.Response resposne = await http.post(uriFunction, body: body);

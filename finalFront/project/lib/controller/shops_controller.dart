@@ -5,12 +5,6 @@ import 'api_helper.dart';
 class ShopsController extends GetxController {
   var shops = List<Shop>.empty(growable: true).obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-    // fetchShops();
-  }
-
   Future<List<Shop>> getAll() async {
     dynamic jsonObject = await ApiHelper().getRequest("/shop");
     List<Shop> result = [];
